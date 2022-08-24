@@ -82,15 +82,8 @@ export default {
     margin-top: 100px;
     max-width:80px;
 }
-#signin{
-    height: 50px;
-    margin-top: 19px;
-    margin-bottom:10px ;
-    width:80px;
-    justify-content:space-evenly;
-    margin-right:15px; 
-    background-color: rgb(83, 69, 79);
-}
+
+
 #signup{
     height: 50px;
     margin-bottom:10px ;

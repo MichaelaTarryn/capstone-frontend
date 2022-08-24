@@ -9,7 +9,7 @@
     <br>
      <input type="password" id="password" placeholder="Enter password.." v-model="password" required>
     <br>
-    <button  id="signin" class=button type="btn" @click="login"> LOGIN</button>
+    <button  id="signin" class=button type="btn"> LOGIN</button>
     </form>
    
   </div>

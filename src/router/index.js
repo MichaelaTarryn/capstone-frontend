@@ -33,6 +33,18 @@ const routes = [
       name: 'landing',
       component: () => import( '../views/landingpage.vue')
     },
+    ,
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import( '../views/searchuser.vue')
+    },
+    ,
+    {
+      path: '/addapost',
+      name: 'addapost',
+      component: () => import( '../views/addtopost.vue')
+    },
 ]
 
 const router = createRouter({
