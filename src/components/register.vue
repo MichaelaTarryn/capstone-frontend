@@ -6,7 +6,7 @@
     <form @submit.prevent="register"> 
     <input type="text" id="name" placeholder="Please enter your Full Name...." v-model="fullname" required>
     <br>
-    <input type="gmail" id="gmail" placeholder="Please enter your gmail.." v-model="gmail" required>
+    <input type="gmail" id="gmail" placeholder="Please enter your gmail.." v-model="email" required>
     <br>
     <input type="text" id="username" placeholder="Please create yourself a username.." v-model="username" required>
     <br>
@@ -28,6 +28,7 @@ export default {
         email:"",
         password:"",
         username:"",
+        userRole:"",
     };
  },
  methods:{
@@ -37,6 +38,7 @@ export default {
             email:this.email,
             password:this.password,
             username:this.username,
+            userRole: this.userRole,
         });
     },
  },

@@ -125,14 +125,16 @@ export default createStore({
         email,
         password,
         username,
+        userRole,
       } = payload
       fetch("https://minigramproject.herokuapp.com/users", {
           method: "POST",
           body: JSON.stringify({
             fullname: fullname,
+            username: username,
             email: email,
             password: password,
-            username: username,
+            userRole: userRole,
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",

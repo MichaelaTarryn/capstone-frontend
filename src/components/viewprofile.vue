@@ -12,16 +12,12 @@
      <router-link class="nav-link" to="/addapost">Add a Post </router-link>
     </div>
     <div id="searches" class="col-md-3">
-       <router-link class="nav-link" to="/profile">View profile</router-link>
+        <button id="logout" @click="Logout">Logout</button>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-12">
-        <div class="card" v-for="post in userPosts" :key="post">
-          <img :src="post.img" alt="" class="rounded-circle" >
-          <h1>{{post.caption}}</h1>
-        </div>
         
     </div>
   </div>
@@ -54,26 +50,16 @@
     <hr>
     <br>
       <div class="row" >
-    <div class="col-sm">
-      One of three columns
-      <!-- <button @click="$store.dispatch('getUserPost', user.ID)">Hello</button> -->
-      <!-- {{userPosts.img}}
-      {{userPosts.caption}} -->
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col-md-4" v-for="post in userPosts" :key="post">
+       <img :src="post.img" alt="" class="img-thumbnail" >
     </div>
   </div>
   </div>
 
   <div class="row">
-    <div class="col-md-12"> 
-     <button id="logout" @click="Logout">Logout</button>
-    </div>
+
   </div>
+   <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
 </div>
 
 </template>
@@ -112,7 +98,7 @@ mounted() {
     height:30px;
 }
 .container{
-    height: 440vh;
+    height: 190vh;
     background-color: rgb(179, 126, 126);
 }
 #fullname1{
@@ -127,5 +113,13 @@ mounted() {
 #edit{
     width:400px;
     margin-bottom: 10px;
+}
+.img-thumbnail{
+  height: 370px;
+  width:350px;
+  margin-bottom:20px;
+}
+#FOOTER {
+  padding: 20px;
 }
 </style>
