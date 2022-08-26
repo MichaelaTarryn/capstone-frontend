@@ -8,9 +8,11 @@
     <input type="text" id="gmail" placeholder="Please enter your gmail.." v-model="email" required>
     <br>
      <input type="password" id="password" placeholder="Enter password.." v-model="password" required>
-    <br>
-    <button  id="signin" class=button type="btn"> LOGIN</button>
+<button  id="signin" class=button type="btn"> LOGIN</button>
     </form>
+    
+    
+    <button  id="signup" class=button type="btn" @click="Signup"> SIGN UP</button>
    
   </div>
 </template>
@@ -30,6 +32,9 @@ export default {
             password:this.password,
         });
     },
+    Signup(){
+        this.$store.dispatch("Signup");
+    }
  },
 
  computed:{
@@ -71,6 +76,15 @@ export default {
     margin-top: 19px;
     margin-bottom:10px ;
     width:80px;
+    justify-content:space-evenly;
+    margin-right:15px; 
+    background-color: rgb(83, 69, 79);
+}
+#signup{
+    height: 50px;
+    margin-top: 19px;
+    margin-bottom:10px ;
+    width:120px;
     justify-content:space-evenly;
     margin-right:15px; 
     background-color: rgb(83, 69, 79);

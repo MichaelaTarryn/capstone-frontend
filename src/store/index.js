@@ -54,12 +54,18 @@ export default createStore({
 
       ,
     user: null,
+    userPosts: null,
     users: null,
+    post:null,
   },
   getters: {},
   mutations: {
     setUser: (state, user) => {
       state.user = user;
+      console.log(user);
+    },
+    setUserPosts: (state, userPosts) => {
+      state.userPosts = userPosts;
     },
     setToken: (state, token) => {
       state.token = token;
@@ -67,14 +73,50 @@ export default createStore({
     setPost(state, post) {
       state.post = post;
     },
+    GetUser(state,users){
+      state.users=users;
+    },
   },
   actions: {
+    GetUser: async (context) => {
+      fetch("https://minigramproject.herokuapp.com/users")
+        .then((res) => res.json())
+        .then((data) => {
+          context.commit("GetUser", data.results)
+        });
+    },
     getPost: async (context) => {
       fetch("https://minigramproject.herokuapp.com/post")
         .then((res) => res.json())
         .then((data) => {
           context.commit("setPost", data.results)
         });
+    },
+    getUserPosts:async (context, id)=>{
+      // fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
+      fetch(`http://localhost:3000/users/${id}/post`)
+    //  id = req.params.id
+      .then((res)=> res.json())
+      .then((data) => {
+        console.log(data)
+        context.commit("setUserPosts", data)
+      });
+    },
+    Signup: async (context) => {
+      context.state.user = null;
+      router.push("/register");
+    },
+    Signin: async (context) => {
+      context.state.user = null;
+      router.push("/login");
+    },
+    Goback: async (context) => {
+      context.state.user = null;
+      router.push("/landing");
+    },
+    Logout: async (context) => {
+      context.state.user = null;
+      router.push("/login");
     },
     // REGISTER user to mysqldb   
     register: async (context, payload) => {

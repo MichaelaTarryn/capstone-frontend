@@ -45,6 +45,12 @@ const routes = [
       name: 'addapost',
       component: () => import( '../views/addtopost.vue')
     },
+    {
+      path: '/profile/:id',
+      name: 'profile',
+      component: () => import( '../views/profile.vue'),
+      props: true,
+    },
 ]
 
 const router = createRouter({

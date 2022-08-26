@@ -1,13 +1,15 @@
 <template>
 
 
-<Nav/>
+
+<login/>
 </template>
 <script>
-import Nav from '../components/nav.vue'
+import login from '../components/login.vue'
+
 export default{
   components:{
-    Nav,
+    login,
   }
 }
 </script>

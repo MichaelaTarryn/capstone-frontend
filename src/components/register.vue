@@ -14,7 +14,7 @@
     <br>
     <div >
         <button id="signin" type="btn" @click="register"> Submit</button> 
-        <button id="signin" type="btn" > Sign up</button></div>
+        </div>
     </form>
    
   </div>
