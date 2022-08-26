@@ -114,9 +114,17 @@ export default createStore({
       context.state.user = null;
       router.push("/landing");
     },
+    Goback1: async (context,userPosts) => {
+      context.state.userPosts=userPosts;
+      router.push("/profile/:id")
+    },
     Logout: async (context) => {
       context.state.user = null;
       router.push("/login");
+    },
+    edit: async (context) => {
+      // context.state.user = null;
+      router.push("/edit");
     },
     // REGISTER user to mysqldb   
     register: async (context, payload) => {
@@ -200,7 +208,23 @@ export default createStore({
             // })
           }
         });
-    }
+    },
+     // update user information
+  updateUser: async (context, user) => {
+    fetch("https://minigramproject.herokuapp.com/users" + user.id, {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.msg);
+        context.dispatch("getuser");
+      });
+  },
   },
   modules: {}
 })

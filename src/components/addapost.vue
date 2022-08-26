@@ -75,7 +75,7 @@ export default {
 
 <style scoped>
 .container{
-    height: 100vh;
+    min-height:fit-content;
     background-color: rgb(179, 126, 126);
 }
 #logo{

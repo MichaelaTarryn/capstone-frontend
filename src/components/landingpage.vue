@@ -73,7 +73,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 390vh;
+ min-height:fit-content;
   background-color: rgb(179, 126, 126);
 }
 .row1 {

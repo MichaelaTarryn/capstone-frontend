@@ -51,6 +51,11 @@ const routes = [
       component: () => import( '../views/profile.vue'),
       props: true,
     },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: () => import( '../views/editprofile.vue')
+    },
 ]
 
 const router = createRouter({
