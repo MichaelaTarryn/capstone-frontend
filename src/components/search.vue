@@ -1,0 +1,160 @@
+<template>
+  <div class="container" v-if="user">
+    <div class="row">
+      <div id="logo" class="col-md-2"><h5>𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5></div>
+      <div  id="searches" class="col-md-2">
+   <router-link class="nav-link" to="/landing">Home</router-link>
+    </div>
+      <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/search"
+          >search followers
+        </router-link>
+      </div>
+      <div id="searches" class="col-md-3">
+        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
+      </div>
+      <div id="searches" class="col-md-3">
+        <router-link
+          :to="{ name: 'profile', params: { id: user.id } }"
+          class="nav-link"
+          >View profile</router-link
+        >
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div id="first" class="col-md-2">
+        <button class="btn" @click="Goback">Go back</button>
+      </div>
+      <div id="search1" class="col-md-4">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          v-model="search"
+        />
+      </div>
+      <hr />
+      <!-- <div id="page" class="container">
+    <div class="new-card row" v-if="upost">
+      <div
+        class="card col-md-3 mx-5 my-3"
+      
+      >
+        <div class="side front-card">
+        </div>
+  
+      </div>
+    </div>
+    <div v-else>
+      <h2>Loading ...</h2>
+    </div>
+  </div> -->
+    </div>
+    <div id="results">
+    </div>
+    <div class="container" v-if="posts">
+      <div class="row">
+        <div class="col-md-4" v-for="post in posts"
+        :key="post">
+          <div class="card" style="width: 18rem;">
+  <img class="card-img-top" :src="post.img" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{}}</h5>
+    <p class="card-text">{{post.caption}}</p>
+  </div>
+</div>
+        </div>
+      </div> 
+      <DIV ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED </DIV>
+    </div>
+   
+    <div v-else>
+      <h2>
+         Loading ...
+    </h2></div>
+  </div>
+
+  <div v-else>
+<h2>loading ///</h2>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      search: "",
+    };
+  },
+  methods: {
+    Goback() {
+      this.$store.dispatch("Goback");
+    },
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    posts() {
+      return this.$store.state.post;
+    },
+    upost() {
+      return this.$store.state.post?.filter((post) => {
+        let isMatch = true;
+        if (!post.username.toLowerCase().includes(this.search)) {
+          isMatch = false;
+        }
+        return isMatch;
+      });
+    },
+
+  },
+  mounted() {
+    this.$store.dispatch("GetUser");
+    this.$store.dispatch("getPost");
+  },
+};
+</script>
+
+<style scoped>
+.container {
+  height: 100vh;
+  background-color: rgb(250, 246, 246);
+  /* background-color: rgb(179, 126, 126); */
+}
+#logo {
+  margin-top: 20px;
+  padding: auto;
+  height: 30px;
+}
+#searches {
+  margin-top: 20px;
+  padding: auto;
+  height: 30px;
+}
+#first {
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+#search1 {
+  margin-left: 90px;
+}
+.nav-link:hover {
+  color: rgb(198, 134, 134);
+  text-decoration-line: underline;
+  border-bottom-color: #abcdef;
+}
+h5 {
+  color: rgb(198, 134, 134);
+}
+.card{
+  margin-left:60px;
+  margin-bottom: 20px;
+}
+.card-img-top{
+  width:18rem;
+  height:260px;
+}
+</style>

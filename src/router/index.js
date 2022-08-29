@@ -37,7 +37,7 @@ const routes = [
     {
       path: '/search',
       name: 'search',
-      component: () => import( '../views/searchuser.vue')
+      component: () => import( '../views/searchusers.vue')
     },
     ,
     {
@@ -49,6 +49,12 @@ const routes = [
       path: '/profile/:id',
       name: 'profile',
       component: () => import( '../views/profile.vue'),
+      props: true,
+    },
+    {
+      path: '/single/:id/',
+      name: 'single',
+      component: () => import( '../views/single.vue'),
       props: true,
     },
     {

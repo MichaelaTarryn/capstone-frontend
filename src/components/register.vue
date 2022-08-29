@@ -57,6 +57,7 @@ export default {
     height:60vh;
     width:660px;
     padding: 20px;
+    margin-top:4%;
 
 }
 #name{
@@ -73,6 +74,7 @@ export default {
     margin-top: 20px;
     width:300px;
      text-align: center;
+     margin-bottom:20px;
 
 }
 #username{
@@ -91,5 +93,9 @@ export default {
     margin-bottom:10px ;
     width:80px;
     justify-content:space-evenly;
+
+}
+h1{
+    color: rgb(198, 134, 134);
 }
 </style>

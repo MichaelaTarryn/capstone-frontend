@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <div id="logo" class="col-md-3">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</div>
+      <div id="logo" class="col-md-3"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
+      </div>
       <div id="searches" class="col-md-3">
         <router-link class="nav-link" to="/search"
           >search followers
@@ -18,7 +19,7 @@
         >
       </div>
     </div>
-    <hr />
+    <hr/>
     <div class="row">
       <div class="col-md-2" v-for="story in story" :key="story">
         <img :src="story.img" alt="..." class="rounded-circle" />
@@ -26,7 +27,7 @@
         {{ story.username }}
       </div>
     </div>
-    <hr />
+    <hr/>
     <div class="posts" v-for="posts in posts" :key="posts">
       <div class="row">
         <div class="col-sm-2">
@@ -38,7 +39,7 @@
       <br />
       <div class="row">
         <div class="col-md-12">
-          <img :src="posts.img" id="pimh" />
+          <img :src="posts.img" id="pimh"  class="img-fluid"/>
         </div>
         <br />
         <div class="row">
@@ -74,7 +75,7 @@ export default {
 <style scoped>
 .container {
  min-height:fit-content;
-  background-color: rgb(179, 126, 126);
+  background-color: rgb(250, 246, 246);
 }
 .row1 {
   display: flex;
@@ -114,4 +115,20 @@ export default {
 .rounded-circle {
   height: 90px;
 }
+
+.nav-link:hover{
+    color: rgb(198, 134, 134);
+    text-decoration-line: underline;
+    border-bottom-color: #abcdef;
+
+}
+hr{
+        height: 2px;
+        background-color: rgb(198, 134, 134);
+        border: none;
+    }
+h5{
+color: rgb(198, 134, 134);
+}
+
 </style>

@@ -53,15 +53,17 @@ export default createStore({
       ]
 
       ,
-    user: null,
+    user: null || JSON.parse(localStorage.getItem('user')),
     userPosts: null,
     users: null,
     post:null,
+    token: null || localStorage.getItem('usertoken'),
   },
   getters: {},
   mutations: {
     setUser: (state, user) => {
       state.user = user;
+      localStorage.setItem("user",JSON.stringify(user))
       console.log(user);
     },
     setUserPosts: (state, userPosts) => {
@@ -69,6 +71,7 @@ export default createStore({
     },
     setToken: (state, token) => {
       state.token = token;
+      localStorage.setItem("usertoken",token)
     },
     setPost(state, post) {
       state.post = post;
@@ -89,12 +92,14 @@ export default createStore({
       fetch("https://minigramproject.herokuapp.com/post")
         .then((res) => res.json())
         .then((data) => {
-          context.commit("setPost", data.results)
+          console.log("object");
+          console.log(data);
+          context.commit("setPost", data)
         });
     },
     getUserPosts:async (context, id)=>{
       // fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
-      fetch(`http://localhost:3000/users/${id}/post`)
+      fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
     //  id = req.params.id
       .then((res)=> res.json())
       .then((data) => {
@@ -111,12 +116,10 @@ export default createStore({
       router.push("/login");
     },
     Goback: async (context) => {
-      context.state.user = null;
       router.push("/landing");
     },
-    Goback1: async (context,userPosts) => {
-      context.state.userPosts=userPosts;
-      router.push("/profile/:id")
+    Goback1: async (context, id) => {
+      router.push("/profile/" + id);
     },
     Logout: async (context) => {
       context.state.user = null;
@@ -134,6 +137,7 @@ export default createStore({
         password,
         username,
         userRole,
+
       } = payload
       fetch("https://minigramproject.herokuapp.com/users", {
           method: "POST",
@@ -211,7 +215,7 @@ export default createStore({
     },
      // update user information
   updateUser: async (context, user) => {
-    fetch("https://minigramproject.herokuapp.com/users" + user.id, {
+    fetch("https://minigramproject.herokuapp.com/users/" + user.id, {
         method: "PUT",
         body: JSON.stringify(user),
         headers: {
@@ -222,9 +226,58 @@ export default createStore({
       .then((res) => res.json())
       .then((data) => {
         alert(data.msg);
-        context.dispatch("getuser");
+        context.dispatch("GetUser");
       });
   },
+   // Deletes user from db
+   deleteuser: async (context, id) => {
+    fetch("https://minigramproject.herokuapp.com/users/" + id, {
+        method: "DELETE",
+        headers: {
+          "x-auth-token": context.state.token,
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.msg)
+        context.dispatch("GetUser");
+      }) 
+      router.push({
+          name: "register"
+        })
+  },
+//adding a post
+addPost: async (context, payload) => {
+  const {
+    img,
+      caption,
+      peopleTag,
+      addlocation,
+      likes
+  } = payload;
+  fetch("https://minigramproject.herokuapp.com/post", {
+      method: "POST",
+      body: JSON.stringify({
+        img:img,
+        peopleTag:peopleTag,
+        caption:caption,
+        addlocation:addlocation,
+        likes:likes,
+        userId: context.state.user.id
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": `${context.state.token}`,
+      },
+      mode:"no-cors"
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      alert(data.msg);
+      context.dispatch("getPost");
+    });
+},
+
   },
   modules: {}
 })

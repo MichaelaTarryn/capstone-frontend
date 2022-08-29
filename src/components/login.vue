@@ -8,12 +8,17 @@
     <input type="text" id="gmail" placeholder="Please enter your gmail.." v-model="email" required>
     <br>
      <input type="password" id="password" placeholder="Enter password.." v-model="password" required>
-<button  id="signin" class=button type="btn"> LOGIN</button>
+     <div id="buttons">
+         <button  id="signin" class=button type="btn"> LOGIN</button>
+       <button  id="signup" class=button type="btn" @click="Signup"> SIGN UP</button> 
+    </div>
+     
+        
     </form>
     
-    
-    <button  id="signup" class=button type="btn" @click="Signup"> SIGN UP</button>
    
+
+
   </div>
 </template>
 
@@ -52,6 +57,7 @@ export default {
     height:50vh;
     width:660px;
     padding: 20px;
+    margin-top:4%;
 
 }
 
@@ -75,7 +81,7 @@ export default {
     height: 50px;
     margin-top: 19px;
     margin-bottom:10px ;
-    width:80px;
+    width:120px;
     justify-content:space-evenly;
     margin-right:15px; 
     background-color: rgb(83, 69, 79);
@@ -88,5 +94,15 @@ export default {
     justify-content:space-evenly;
     margin-right:15px; 
     background-color: rgb(83, 69, 79);
+}
+
+h1{
+    color: rgb(198, 134, 134);
+}
+
+#buttons{
+    display:flex;
+    justify-content: center;
+    gap:6px;
 }
 </style>

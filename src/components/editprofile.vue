@@ -1,14 +1,17 @@
 <template>
   <div class="container" v-if="user">
      <div class="row">
-    <div  id=logo class="col-md-3">
-      𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜
+    <div  id=logo class="col-md-2">
+      <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
     </div>
     <div  id="searches" class="col-md-3">
+   <router-link class="nav-link" to="/landing">Home</router-link>
+    </div>
+    <div  id="searches" class="col-md-2">
    <router-link class="nav-link" to="/search">search followers </router-link>
 
     </div>
-    <div  id="searches" class="col-md-3">
+    <div  id="searches" class="col-md-2">
   <router-link class="nav-link" to="/addapost">Add a Post</router-link>
     </div>
     <div id="searches" class="col-md-3">
@@ -18,11 +21,13 @@
   <hr>
   <div class="row">
     <div id="first" class="col-md-2">
-<button class="btn" @click="Goback1">Go back  {{user.username}} if you want too</button>
+      <router-link :to="{ name: 'profile', params: { id: user.id }}">
+        <button class="btn">Go back  {{user.username}} if you want too</button>
+      </router-link>
     </div>
     <hr>
   </div>
-  <form action="" class="editline">
+  <form action="" class="editline" @submit.prevent="updateUser">
   <div class="row">
  
   </div>
@@ -31,7 +36,7 @@
     <label for="">Fullname:</label>
  </div>
  <div class="col-md-12"> 
-        <input type="text" id="fullname" name="fullname" v-model="fullname">
+        <input type="text" id="fullname" name="fullname" v-model="user.fullname">
  </div>
   </div>
   <div class="row">
@@ -39,7 +44,7 @@
     <label for="">Username:</label>
  </div>
           <div class="col-md-12"> 
-        <input type="text" id="username" name="username" v-model="username">
+        <input type="text" id="username" name="username" v-model="user.username">
          </div>
   </div>
   <div class="row">
@@ -47,7 +52,7 @@
     <label for="">ProfilePic:</label>
  </div>
           <div class="col-md-12"> 
-        <input type="text" id="profilePic" name="profilePic" v-model="profilePic">
+        <input type="text" id="profilePic" name="profilePic" v-model="user.profilePic">
          </div>
   </div>
   <div class="row">
@@ -55,12 +60,20 @@
     <label for="">Bio:</label>
  </div>
           <div class="col-md-12"> 
-        <input type="text" id="bio" name="bio" v-model="bio">
+        <input type="text" id="bio" name="bio" v-model="user.bio">
          </div>
   </div>
   <div class="row">
     <div class="col-md-12"> 
-      <div id="submit"><button id="submit">saved changes</button> 
+    <label for="">Job Role:</label>
+ </div>
+          <div class="col-md-12"> 
+        <input type="text" id="userJob" name="bio" v-model="user.userJob">
+         </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"> 
+      <div id="submit"><button id="submit"  @click="$store.dispatch('updateUser', user)"> saved changes</button> 
         </div>
          </div>
   </div>
@@ -73,6 +86,17 @@
 
 <script>
 export default {
+  props : ["user"],
+  data (){
+    return{
+      fullname:"",
+      username:"",
+      profilePic:"https://i.postimg.cc/nhC2SmNk/pofile-pic.jpg",
+      bio:"",
+      userJob:"",
+    }
+
+  },
     computed: {
     user() {
         return this.$store.state.user
@@ -81,7 +105,7 @@ export default {
 
  methods: {
     Goback1() {
-      this.$store.dispatch("Goback1");
+      this.$store.dispatch("Goback1", this.$route.params.id);
     },
   },
 }
@@ -90,7 +114,8 @@ export default {
 <style scoped>
 .container{
     min-height:fit-content;
-    background-color: rgb(179, 126, 126);
+    background-color: rgb(250, 246, 246);
+    /* background-color: rgb(179, 126, 126); */
 }
 #logo{
     margin-top: 20px;
@@ -118,20 +143,36 @@ export default {
     margin-left:190px;
     margin-bottom: 15px;
 }
- 
+.nav-link:hover{
+    color: rgb(198, 134, 134);
+    text-decoration-line: underline;
+    border-bottom-color: #abcdef;
+
+}
 
 #username{
     width:390px;
+    text-align: center;
 }
 #fullname{
     width:390px;
+    text-align: center;
 }
 #bio{
     width:390px;
     margin-bottom: 20px;
+    text-align: center;
 }
 #profilePic{
     width:390px;
+}
+#userJob{
+    width:390px;
+    text-align:center;
+    margin-bottom: 20px;
+}
+#btn:hover{
+  color: rgb(198, 134, 134);
 }
 #submit{
   margin-top:50px;
@@ -143,7 +184,9 @@ export default {
 #FOOTER{
   MARGIN-TOP:40PX;
 }
-
+h5{
+color: rgb(198, 134, 134);
+}
 .editline{
 line-height: 50px;
 min-height: fit-content;
