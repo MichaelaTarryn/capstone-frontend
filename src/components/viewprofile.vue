@@ -68,7 +68,7 @@
     <hr>
     <br>
       <div class="row" >
-    <div class="col-md-4"  v-for="post in userPosts" :key="post">
+    <div class="col-md-4"  v-for="post in userPosts" :key="post" :post="post">
      
        <img :src="post.img" alt="" id="upost" class="img-thumbnail" >
         <router-link

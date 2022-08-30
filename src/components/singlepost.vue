@@ -24,19 +24,36 @@
   </div>
   
   <hr>
+  
+  <div class="row">
+    <div class="col-md-3">
+
+          <button> Go back
+            <!-- <router-link
+            :to="{ name: 'single', params: { id: post.postId} }"
+          > </router-link>   -->
+             </button>
+      
+      
+    </div>
+     
   </div>
+ <hr>
+
+
   <div class="container">
     <div class="row" v-if="userSinglePosts">
     <div class="col-md-6" v-for="userSinglepost in  userSinglePosts"
         :key="userSinglepost">
     </div>
     <div class="col-md-12"> 
-      {{userSinglePosts}} 
+     
+      {{userSinglePosts}}  
     </div>
     <div class="col-md-12">
       <img id="userpic"  class="img-fluid" :src="userSinglePosts.img" alt="">
     </div>
-    <div  id="details" class="col-md-6">
+    <div  id="details" class="col-md-8">
       {{userSinglePosts.username}}
    <button id="likes"><i class="bi bi-star"></i></button>
       {{userSinglePosts.likes}}
@@ -49,6 +66,7 @@
     >
     Edit Post
     </button> 
+    <button btn="btn" type="button" id="btnD" @click="this.$store.dispatch('deletePost',userSinglePosts)"> Delete post</button>
     <!-- Modal --> 
   <div
     class="modal fade"
@@ -96,17 +114,19 @@
           <button
             type="button"
             id="Btn"
-            data-bs-dismiss="modal" @click="$store.dispatch('EditPost')"
+            data-bs-dismiss="modal" @click="this.$store.dispatch('EditPost', userSinglePosts)"
             
           >
             <i class="bi bi-plus-circle"></i>
             Edit Product
           </button>
+
         </div>
       </div>
     </div>
   </div> 
        </div>
+       
        
   </div>
   <div class="row" v-if="userSinglePosts">
@@ -120,11 +140,13 @@
     </div>
   </div>
   </div>
+  </div>
   
 </template>
 
 <script>
 export default {
+  props : ["id"],
   data() {
     return {
       img: "",
@@ -148,6 +170,12 @@ export default {
   mounted(){
     this.$store.dispatch('getUserSinglePost',this.$route.params.id),
     this.$store.dispatch('getPost');
+  },
+
+  methods: {
+    update() {
+      this.$store.dispatch("EditPost", this.post)
+    }
   },
  
 }
@@ -217,5 +245,10 @@ color: rgb(198, 134, 134);
   margin-top: 20px;
   display: flex;
  float:right;
+}
+
+#btnD{
+  width:160px;
+  margin-left:120px;
 }
 </style>

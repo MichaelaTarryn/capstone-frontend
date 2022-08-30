@@ -62,6 +62,16 @@ const routes = [
       name: 'edit',
       component: () => import( '../views/editprofile.vue')
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import( '../views/AboutView.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import( '../views/contact.vue')
+    },
 ]
 
 const router = createRouter({

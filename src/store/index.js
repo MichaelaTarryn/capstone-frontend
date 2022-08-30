@@ -96,8 +96,8 @@ export default createStore({
       fetch("https://minigramproject.herokuapp.com/post")
         .then((res) => res.json())
         .then((data) => {
-          console.log("object");
-          console.log(data);
+          // console.log("object");
+          // console.log(data);
           context.commit("setPost", data)
         });
     },
@@ -107,18 +107,30 @@ export default createStore({
     //  id = req.params.id
       .then((res)=> res.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         context.commit("setUserPosts", data)
       });
     },
     getUserSinglePost:async (context,postId)=>{
     const id  = context.state.user.id
-      fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
-        .then((res)=> res.json())
+  
+ fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
+ .then((res)=> res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           context.commit("setUserSinglePosts",data[0])
         });
+ if (results.length>0) {
+   fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}/comments`)
+   .then((res)=> res.json())
+        .then((data) => {
+          // console.log(data)
+          context.commit("setUserSinglePosts",data[0])
+        });
+ }else {
+  
+ }
+        
       },
     Signup: async (context) => {
       context.state.user = null;
@@ -292,7 +304,7 @@ addPost: async (context, payload) => {
 
 //edit a post
 EditPost: async (context, post) => {
-  fetch("https://minigramproject.herokuapp.com/post" + post.postId, {
+  fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
       method: "PUT",
       body: JSON.stringify(post),
       headers: {
@@ -306,6 +318,24 @@ EditPost: async (context, post) => {
       context.dispatch("getPost");
     });
 },
+//delete a post
+  deletePost: async (context, post) => {
+    fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": context.state.token,
+        },
+      })
+      .then((res) => res.json()) 
+      .then((data) => {
+        alert(data.msg)
+        context.dispatch("getPost")});
+        router.push({
+          name: "landing"
+        })
+  },
+
   },
   modules: {}
 })

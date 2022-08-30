@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+   <div class="container">
     <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div> 
@@ -27,27 +27,26 @@
     </div>
     <hr/>
     <div class="row">
-      <div class="col-md-12">
-        <h5> About MIMIGRAM</h5>
-        <div id="content"></div>
-      </div>
+        <DIV CLASS="COL-MD-12">
+            
+        </DIV>
     </div>
     <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
-  </div>
+  </div> 
 </template>
+
 <script>
-export default{
-  computed: {
+export default {
+    computed: {
     user() {
         return this.$store.state.user
     },
-
-}
-}
-
+    }
+    }
 </script>
 
 <style scoped>
+
 .container {
  min-height:fit-content;
   background-color: rgb(250, 246, 246);
@@ -71,9 +70,5 @@ hr{
     }
 h5{
 color: rgb(198, 134, 134);
-}
-#content{
-  height:100vh;
-  background-image:url("https://i.postimg.cc/xCgGB8T9/social-media.jpg");
 }
 </style>
