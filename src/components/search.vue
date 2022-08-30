@@ -61,7 +61,12 @@
           <div class="card" style="width: 18rem;">
   <img class="card-img-top" :src="post.img" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{}}</h5>
+    <router-link
+            :to="{ name: 'single', params: { id: post.postId} }"
+          >
+          <button> View more</button>
+      
+      </router-link>
     <p class="card-text">{{post.caption}}</p>
   </div>
 </div>

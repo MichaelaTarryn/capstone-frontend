@@ -55,6 +55,7 @@ export default createStore({
       ,
     user: null || JSON.parse(localStorage.getItem('user')),
     userPosts: null,
+    userSinglePosts:null,
     users: null,
     post:null,
     token: null || localStorage.getItem('usertoken'),
@@ -68,6 +69,9 @@ export default createStore({
     },
     setUserPosts: (state, userPosts) => {
       state.userPosts = userPosts;
+    },
+    setUserSinglePosts: (state, userSinglePosts) => {
+      state.userSinglePosts = userSinglePosts;
     },
     setToken: (state, token) => {
       state.token = token;
@@ -107,6 +111,15 @@ export default createStore({
         context.commit("setUserPosts", data)
       });
     },
+    getUserSinglePost:async (context,postId)=>{
+    const id  = context.state.user.id
+      fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
+        .then((res)=> res.json())
+        .then((data) => {
+          console.log(data)
+          context.commit("setUserSinglePosts",data[0])
+        });
+      },
     Signup: async (context) => {
       context.state.user = null;
       router.push("/register");
@@ -269,7 +282,6 @@ addPost: async (context, payload) => {
         "Content-type": "application/json; charset=UTF-8",
         "x-auth-token": `${context.state.token}`,
       },
-      mode:"no-cors"
     })
     .then((res) => res.json())
     .then((data) => {
@@ -278,6 +290,22 @@ addPost: async (context, payload) => {
     });
 },
 
+//edit a post
+EditPost: async (context, post) => {
+  fetch("https://minigramproject.herokuapp.com/post" + post.postId, {
+      method: "PUT",
+      body: JSON.stringify(post),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": context.state.token,
+      },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      alert(data.msg);
+      context.dispatch("getPost");
+    });
+},
   },
   modules: {}
 })

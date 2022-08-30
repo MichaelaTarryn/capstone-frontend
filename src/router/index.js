@@ -52,7 +52,7 @@ const routes = [
       props: true,
     },
     {
-      path: '/single/:id/',
+      path: '/single/:id',
       name: 'single',
       component: () => import( '../views/single.vue'),
       props: true,

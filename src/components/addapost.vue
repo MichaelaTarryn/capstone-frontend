@@ -27,37 +27,41 @@
     <hr>
   </div>
   <form @submit.prevent="addPost">
-  <div class="row">
-    <div class="col-md-3"> 
-      <div id="imgupload">  <button id="img"> img</button>
-        <input type="file" id="img2" name="img" accept="image/*" >
+    <div class="row">
+    <div class="col-md-12"> 
+      <div id="imgupload">  <label for=""> Enter img url  please:</label>
         </div>
-       
          </div>
-          <div class="col-md-8"> 
+  </div>
+    <div class="row">
+    <div class="col-md-12"> 
+        <input type="text" id="img2" name="img"  placeholder="img url ......" v-model="img">
+         </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"> 
+       <label for=""> Enter caption please :</label>
+         </div>
+          <div class="col-md-12"> 
         <input type="text" id="caption" name="caption" placeholder="Write caption ......" v-model="caption">
          </div>
   </div>
   <div class="row">
-    <div class="col-md-3"> 
-      <div id="imgupload">  <button id="tag"> tag people</button>
-        </div>
-         </div>
-          <div class="col-md-8"> 
+          <div class="col-md-12"> 
+            <div class="col-md-12"> <label for=""> People Tag :</label></div>
+           
         <input type="text" id="tag1" name="tag1" placeholder="Enter people you want to tag.." v-model="peopleTag">
          </div>
   </div>
   <div class="row">
-    <div class="col-md-3"> 
-      <div id="imgupload">  <button id="tag"> add location</button>
-        </div>
-         </div>
-          <div class="col-md-8"> 
+    <div class="col-md-12"><label for=""> Add location</label></div>
+          <div class="col-md-12"> 
+            
         <input type="text" id="tag1" name="tag1" placeholder="Enter the location you want to tag in.." v-model="addlocation">
          </div>
   </div>
   <div class="row">
-    <div class="col-md-6"> 
+    <div class="col-md-12"> 
       <div id="submit"><button id="submit" @click="addPost"> Submit</button> 
         </div>
          </div>
@@ -89,6 +93,9 @@ export default {
   computed:{
     user() {
       return this.$store.state.user;
+    },
+    getPost() {
+      return this.$store.state.post;
     },
   }
 }
@@ -126,19 +133,23 @@ export default {
     margin-left:190px;
     margin-bottom: 15px;
 }
-#img2{
-  width:220px;
-  margin-left:208px;
-}
+
 #caption{
   margin-left:30px;
   width:530px;
   height:90px;
   margin-bottom:20px;
-  margin-top:50px;
+  margin-top:5px;
 }
 #tag1{
-  margin-top:43px;
+  margin-top:13px;
+  margin-left:30px;
+  width:530px;
+  height:40px;
+  margin-bottom:20px;
+}
+#img2{
+  margin-top:13px;
   margin-left:30px;
   width:530px;
   height:40px;
@@ -150,9 +161,9 @@ export default {
 }
 #submit{
   /* margin:auto; */
-  float:right;
   height:60px;
   width:90px;
+  margin:auto;
 }
  /*code to change background color*/
  .nav-link:active {

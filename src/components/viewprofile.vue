@@ -69,8 +69,9 @@
     <br>
       <div class="row" >
     <div class="col-md-4"  v-for="post in userPosts" :key="post">
+     
        <img :src="post.img" alt="" id="upost" class="img-thumbnail" >
-      <router-link
+        <router-link
             :to="{ name: 'single', params: { id: post.postId} }"
           >
           <button> View more</button>
