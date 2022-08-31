@@ -10,29 +10,27 @@
     <div  id="searches" class="col-md-2">
    <router-link class="nav-link" to="/search">search followers </router-link>
     </div>
+    <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/about">About Mimigram</router-link>
+      </div>
+      <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
+      </div>
     
     <div  id="searches" class="col-md-2">
      <router-link class="nav-link" to="/addapost">Add a Post </router-link>
     </div>
-    <div v-if="user" id="searches" class="col-md-3">
-        <router-link
-          :to="{ name: 'profile', params: { id: user.id }}"
-          class="nav-link"
-          >View profile</router-link
-        >
-      </div>
   </div>
   
   <hr>
   
   <div class="row">
     <div class="col-md-3">
-
-          <button> Go back
-            <!-- <router-link
-            :to="{ name: 'single', params: { id: post.postId} }"
-          > </router-link>   -->
-             </button>
+         <router-link
+          :to="{ name: 'profile', params: { id: user.id }}"
+          class="nav-link"
+          >go back</router-link
+        >
       
       
     </div>
@@ -42,12 +40,11 @@
 
 
   <div class="container">
-    <div class="row" v-if="userSinglePosts">
+   <!--  <div class="row" v-if="userSinglePosts">
     <div class="col-md-6" v-for="userSinglepost in  userSinglePosts"
         :key="userSinglepost">
     </div>
     <div class="col-md-12"> 
-     
       {{userSinglePosts}}  
     </div>
     <div class="col-md-12">
@@ -55,7 +52,7 @@
     </div>
     <div  id="details" class="col-md-8">
       {{userSinglePosts.username}}
-   <button id="likes"><i class="bi bi-star"></i></button>
+    <button id="likes" @click="this.$store.dispatch('Addlike',userSinglePosts)"><i class="bi bi-star"></i></button > 
       {{userSinglePosts.likes}}
       <button
      
@@ -67,7 +64,7 @@
     Edit Post
     </button> 
     <button btn="btn" type="button" id="btnD" @click="this.$store.dispatch('deletePost',userSinglePosts)"> Delete post</button>
-    <!-- Modal --> 
+     Modal  
   <div
     class="modal fade"
     :id="'edit'+userSinglePosts.postId"
@@ -128,15 +125,101 @@
        </div>
        
        
+  </div> -->
+
+    <div class="row" v-if="getUserpostswithoutComments">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-12"> 
+      {{getUserpostswithoutComments}}  
+    </div>
+    <div class="col-md-12">
+      <img id="userpic"  class="img-fluid" :src="getUserpostswithoutComments.img" alt="">
+    </div>
+    <div  id="details" class="col-md-8">
+      {{getUserpostswithoutComments.username}}
+    <button id="likes" @click="this.$store.dispatch('Addlike',getUserpostswithoutComments)"><i class="bi bi-star"></i></button > 
+      {{getUserpostswithoutComments.likes}}
+      <button
+     
+      type="button"
+      class="btn"
+      data-bs-toggle="modal"
+      :data-bs-target="'#edit'+getUserpostswithoutComments.postId"
+    >
+    Edit Post
+    </button> 
+    <button btn="btn" type="button" id="btnD" @click="this.$store.dispatch('deletePost',getUserpostswithoutComments)"> Delete post</button>
+    <!-- Modal --> 
+  <div
+    class="modal fade"
+    :id="'edit'+getUserpostswithoutComments.postId"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabe2"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Post</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="name">img: </label>
+            <input type="name" maxlength="20" required id="add-title" v-model="getUserpostswithoutComments.img"/>
+          </div>
+          <div>
+            <label for="price">caption: </label>
+            <input type="name" required id="add-caption" v-model="getUserpostswithoutComments.caption"  />
+          </div>
+           <div>
+            <label for="img">People tag: </label>
+            <input type="name" required id="add-People" v-model="getUserpostswithoutComments.peopleTag"  />
+          </div>
+          <div>
+            <div>
+               <label for="name">Add location: </label>
+            <input type="text" required id="add-location"   v-model="getUserpostswithoutComments.addlocation" />
+            </div>
+        
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeBtn" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            id="Btn"
+            data-bs-dismiss="modal" @click="this.$store.dispatch('EditPost', getUserpostswithoutComments)"
+            
+          >
+            <i class="bi bi-plus-circle"></i>
+            Edit Product
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div> 
+       </div>
+       
+       
   </div>
   <div class="row" v-if="userSinglePosts">
-    <div id="usercomment" class="col-md-6">
-     <label id="usercomment1" for="">{{userSinglePosts.username}}</label> :
-    
-     <label id="comments" for="">{{userSinglePosts.description}}</label> 
-     <button id="remove"> Remove comment</button>
-    
-     
+    <div v-for="comment in userSinglePosts" :key="comment">
+      <div id="usercomment" class="col-md-6">
+        <label id="usercomment1" for="">{{comment.username}}</label> :
+      
+        <label id="comments" for="">{{comment.description}}</label> 
+        <button id="remove"> Remove comment</button>
+      </div>
     </div>
   </div>
   </div>
@@ -164,11 +247,16 @@ export default {
     },
     userSinglePosts(){
       return this.$store.state.userSinglePosts
+    },
+    getUserpostswithoutComments(){
+      return this.$store.state.userSinglePostswithoutcomments
     }
+  
 
   },
   mounted(){
     this.$store.dispatch('getUserSinglePost',this.$route.params.id),
+    this.$store.dispatch('getUserpostswithoutComments',this.$route.params.id),
     this.$store.dispatch('getPost');
   },
 

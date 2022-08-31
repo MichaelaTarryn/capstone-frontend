@@ -5,17 +5,22 @@
     <div  id=logo class="col-md-2">
       <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
     </div>
-    <div  id="searches" class="col-md-2">
+    <div  id="searches" class="col-md-1">
    <router-link class="nav-link" to="/landing">Home</router-link>
     </div>
     <div  id="searches" class="col-md-2">
    <router-link class="nav-link" to="/search">search followers </router-link>
     </div>
-    
+    <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/about">About Mimigram</router-link>
+      </div>
+      <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
+      </div>
     <div  id="searches" class="col-md-2">
      <router-link class="nav-link" to="/addapost">Add a Post </router-link>
     </div>
-    <div id="buttons" class="col-md-3">
+    <div id="buttons" class="col-md-11">
         <button id="logout" @click="Logout">Logout</button>
            <button id="Delete" @click="deleteuser">Delete Account</button>
     </div>

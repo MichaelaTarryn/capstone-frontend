@@ -55,16 +55,17 @@ export default createStore({
       ,
     user: null || JSON.parse(localStorage.getItem('user')),
     userPosts: null,
-    userSinglePosts:null,
+    userSinglePosts: null,
+    userSinglePostswithoutcomments: null,
     users: null,
-    post:null,
+    post: null,
     token: null || localStorage.getItem('usertoken'),
   },
   getters: {},
   mutations: {
     setUser: (state, user) => {
       state.user = user;
-      localStorage.setItem("user",JSON.stringify(user))
+      localStorage.setItem("user", JSON.stringify(user))
       console.log(user);
     },
     setUserPosts: (state, userPosts) => {
@@ -73,15 +74,19 @@ export default createStore({
     setUserSinglePosts: (state, userSinglePosts) => {
       state.userSinglePosts = userSinglePosts;
     },
+    setUserSinglePostswithoutcomments: (state,userSinglePostswithoutcomments) => {
+      state.userSinglePostswithoutcomments = userSinglePostswithoutcomments;
+    },
+
     setToken: (state, token) => {
       state.token = token;
-      localStorage.setItem("usertoken",token)
+      localStorage.setItem("usertoken", token)
     },
     setPost(state, post) {
       state.post = post;
     },
-    GetUser(state,users){
-      state.users=users;
+    GetUser(state, users) {
+      state.users = users;
     },
   },
   actions: {
@@ -101,37 +106,52 @@ export default createStore({
           context.commit("setPost", data)
         });
     },
-    getUserPosts:async (context, id)=>{
+    getUserPosts: async (context, id) => {
       // fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
       fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
-    //  id = req.params.id
-      .then((res)=> res.json())
+        //  id = req.params.id
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data)
+          context.commit("setUserPosts", data)
+        });
+    },
+    getUserSinglePost: async (context, postId) => {
+      const id = context.state.user.id
+      // fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     console.log(data)
+      //     context.commit("setUserSinglePosts", data[0])
+            fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}/comments`)
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data)
+                context.commit("setUserSinglePosts", data)
+              });
+    },
+    getUserpostswithoutComments:async(context,postId)=>{
+      const id = context.state.user.id
+      fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
+      .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
-        context.commit("setUserPosts", data)
+        console.log(data)
+        context.commit("setUserSinglePostswithoutcomments", data[0])
       });
     },
-    getUserSinglePost:async (context,postId)=>{
-    const id  = context.state.user.id
-  
- fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
- .then((res)=> res.json())
+    Addlike: async (context, post) => {
+      fetch(`https://minigramproject.herokuapp.com/post/${post.postId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          }
+        })
+        .then((res) => res.json())
         .then((data) => {
-          // console.log(data)
-          context.commit("setUserSinglePosts",data[0])
+          console.log(data);
+          context.dispatch("getUserSinglePost","getUserpostswithoutComments", post.postId)
         });
- if (results.length>0) {
-   fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}/comments`)
-   .then((res)=> res.json())
-        .then((data) => {
-          // console.log(data)
-          context.commit("setUserSinglePosts",data[0])
-        });
- }else {
-  
- }
-        
-      },
+    },
     Signup: async (context) => {
       context.state.user = null;
       router.push("/register");
@@ -228,7 +248,7 @@ export default createStore({
             }
             router.push({
               name: "landing"
-            }) 
+            })
 
           } else {
             alert(data.msg)
@@ -238,103 +258,104 @@ export default createStore({
           }
         });
     },
-     // update user information
-  updateUser: async (context, user) => {
-    fetch("https://minigramproject.herokuapp.com/users/" + user.id, {
-        method: "PUT",
-        body: JSON.stringify(user),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "x-auth-token": context.state.token,
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data.msg);
-        context.dispatch("GetUser");
-      });
-  },
-   // Deletes user from db
-   deleteuser: async (context, id) => {
-    fetch("https://minigramproject.herokuapp.com/users/" + id, {
-        method: "DELETE",
-        headers: {
-          "x-auth-token": context.state.token,
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data.msg)
-        context.dispatch("GetUser");
-      }) 
+    // update user information
+    updateUser: async (context, user) => {
+      fetch("https://minigramproject.herokuapp.com/users/" + user.id, {
+          method: "PUT",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("GetUser");
+        });
+    },
+    // Deletes user from db
+    deleteuser: async (context, id) => {
+      fetch("https://minigramproject.herokuapp.com/users/" + id, {
+          method: "DELETE",
+          headers: {
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg)
+          context.dispatch("GetUser");
+        })
       router.push({
-          name: "register"
-        })
-  },
-//adding a post
-addPost: async (context, payload) => {
-  const {
-    img,
-      caption,
-      peopleTag,
-      addlocation,
-      likes
-  } = payload;
-  fetch("https://minigramproject.herokuapp.com/post", {
-      method: "POST",
-      body: JSON.stringify({
-        img:img,
-        peopleTag:peopleTag,
-        caption:caption,
-        addlocation:addlocation,
-        likes:likes,
-        userId: context.state.user.id
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-auth-token": `${context.state.token}`,
-      },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      alert(data.msg);
-      context.dispatch("getPost");
-    });
-},
-
-//edit a post
-EditPost: async (context, post) => {
-  fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
-      method: "PUT",
-      body: JSON.stringify(post),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "x-auth-token": context.state.token,
-      },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      alert(data.msg);
-      context.dispatch("getPost");
-    });
-},
-//delete a post
-  deletePost: async (context, post) => {
-    fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "x-auth-token": context.state.token,
-        },
+        name: "register"
       })
-      .then((res) => res.json()) 
-      .then((data) => {
-        alert(data.msg)
-        context.dispatch("getPost")});
-        router.push({
-          name: "landing"
+    },
+    //adding a post
+    addPost: async (context, payload) => {
+      const {
+        img,
+        caption,
+        peopleTag,
+        addlocation,
+        likes
+      } = payload;
+      fetch("https://minigramproject.herokuapp.com/post", {
+          method: "POST",
+          body: JSON.stringify({
+            img: img,
+            peopleTag: peopleTag,
+            caption: caption,
+            addlocation: addlocation,
+            likes: likes,
+            userId: context.state.user.id
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": `${context.state.token}`,
+          },
         })
-  },
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getPost");
+        });
+    },
+
+    //edit a post
+    EditPost: async (context, post) => {
+      fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
+          method: "PUT",
+          body: JSON.stringify(post),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getPost");
+        });
+    },
+    //delete a post
+    deletePost: async (context, post) => {
+      fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg)
+          context.dispatch("getPost")
+        });
+      router.push({
+        name: "landing"
+      })
+    },
 
   },
   modules: {}

@@ -3,7 +3,7 @@
     <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div> 
-      <div  id="searches" class="col-md-2">
+      <div  id="searches" class="col-md-1">
    <router-link class="nav-link" to="/landing">Home</router-link>
     </div>
       <div id="searches" class="col-md-2">
@@ -11,11 +11,14 @@
           >search followers
         </router-link>
       </div>
-      <div id="searches" class="col-md-2">
+      <div id="searches" class="col-md-1">
         <router-link class="nav-link" to="/addapost">Add a Post </router-link>
       </div>
       <div id="searches" class="col-md-2">
         <router-link class="nav-link" to="/about">About Mimigram</router-link>
+      </div>
+      <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
       </div>
       <div v-if="user" id="searches" class="col-md-2">
         <router-link
@@ -29,7 +32,14 @@
     <div class="row">
       <div class="col-md-12">
         <h5> About MIMIGRAM</h5>
+         <div id="para">
+          Mimigram is a way to show beauty ,to spread the word to rally ,<br> to find community , bringing the whole world just at the end of a click.
+         
+        </div>
         <div id="content"></div>
+      </div>
+      <div class="col-md-12">
+       
       </div>
     </div>
     <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
@@ -72,6 +82,12 @@ hr{
 h5{
 color: rgb(198, 134, 134);
 }
+ #para{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  margin: auto;
+ }
+
 #content{
   height:100vh;
   background-image:url("https://i.postimg.cc/xCgGB8T9/social-media.jpg");
