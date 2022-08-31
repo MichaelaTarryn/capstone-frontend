@@ -149,7 +149,8 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          context.dispatch("getUserSinglePost","getUserpostswithoutComments", post.postId)
+          context.dispatch("getUserSinglePost", post.postId)
+          context.dispatch("getUserpostswithoutComments", post.postId)
         });
     },
     Signup: async (context) => {

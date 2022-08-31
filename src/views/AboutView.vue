@@ -34,7 +34,7 @@
         <h5> About MIMIGRAM</h5>
          <div id="para">
           Mimigram is a way to show beauty ,to spread the word to rally ,<br> to find community , bringing the whole world just at the end of a click.
-         
+         Founded in 2022 by Michaela Tarryn Ward.
         </div>
         <div id="content"></div>
       </div>
