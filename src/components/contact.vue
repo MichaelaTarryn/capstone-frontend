@@ -27,6 +27,8 @@
     </div>
     <hr/>
       <div class="container2">
+        <form  action="https://formspree.io/f/xayknzky"
+  method="POST">
         <div class="row"> 
           <div id="pl" class="col-md-3">
             <h3> Contact info</h3>
@@ -56,7 +58,7 @@
           
         </div>
 
-
+ </form>
     </div>
          
         
@@ -105,10 +107,13 @@ color: rgb(198, 134, 134);
 #li{
   width:70px;
   height:60px;
+  border: 3px solid rgb(198, 134, 134);
 }
 #li1{
   width:70px;
   height:60px;
+  border: 3px solid rgb(198, 134, 134);
+
 }
 p{
   margin-top:40px;
@@ -128,6 +133,7 @@ height:70vh;
 
   
 }
+
 #header{
   margin-top: 60px;
   display: flex;
@@ -136,6 +142,9 @@ height:70vh;
 .container2{
   margin: auto;
   box-shadow: 5px 10px rgb(236, 186, 186);
+}
+#send{
+  border-right: 6px solid rgb(236, 186, 186);
 }
 
 #full{
@@ -154,10 +163,12 @@ height:70vh;
 #submit{
   width: 645px;
   margin-bottom: 10px;
+  border: 2px solid rgb(198, 134, 134);
 }
 
 #pl{
   height:40vh;
+  border-right: 6px solid rgb(236, 186, 186);
 
 }
 
