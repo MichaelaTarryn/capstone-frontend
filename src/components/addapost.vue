@@ -32,6 +32,7 @@
     </div>
     <hr>
   </div>
+
   <form @submit.prevent="addPost">
     <div class="row">
     <div class="col-md-12"> 

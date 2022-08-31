@@ -26,7 +26,7 @@
       <div id="first" class="col-md-2">
         <button class="btn" @click="Goback">Go back</button>
       </div>
-      <div id="search1" class="col-md-4">
+      <div id="search1" v-if="posts" class="col-md-4">
         <input
           class="form-control me-2"
           type="search"
@@ -36,21 +36,6 @@
         />
       </div>
       <hr />
-      <!-- <div id="page" class="container">
-    <div class="new-card row" v-if="upost">
-      <div
-        class="card col-md-3 mx-5 my-3"
-      
-      >
-        <div class="side front-card">
-        </div>
-  
-      </div>
-    </div>
-    <div v-else>
-      <h2>Loading ...</h2>
-    </div>
-  </div> -->
     </div>
     <div id="results">
     </div>
@@ -77,13 +62,11 @@
    
     <div v-else>
       <h2>
-         Loading ...
+         Loading ...  Your patients is deeply appreciated
     </h2></div>
   </div>
 
-  <div v-else>
-<h2>loading ///</h2>
-  </div>
+  
 </template>
 
 <script>
@@ -97,6 +80,7 @@ export default {
     Goback() {
       this.$store.dispatch("Goback");
     },
+
   },
   computed: {
     user() {
@@ -108,7 +92,7 @@ export default {
     upost() {
       return this.$store.state.post?.filter((post) => {
         let isMatch = true;
-        if (!post.username.toLowerCase().includes(this.search)) {
+        if (!post.caption.toLowerCase().includes(this.search)) {
           isMatch = false;
         }
         return isMatch;

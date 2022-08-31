@@ -222,6 +222,17 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div>
+      <div id="commentM" class="col-md-10">
+        <input type="text" id="username" placeholder="Username">
+      
+        <input type="text"  placeholder="Enter comment" v-model="description">
+        <button id="addcomment"> Submit comment</button>
+        <button id="remove1"> Remove comment</button>
+      </div>
+    </div>
+  </div>
   </div>
   </div>
   
@@ -263,7 +274,12 @@ export default {
   methods: {
     update() {
       this.$store.dispatch("EditPost", this.post)
-    }
+    },
+    addComment() {
+      return this.$store.dispatch("addComment", {
+        description: this.description,
+      });
+    },
   },
  
 }
@@ -282,6 +298,9 @@ export default {
     border-bottom-color: #abcdef;
 
 }
+#username{
+  margin-top:20px;
+}
 h5{
 color: rgb(198, 134, 134);
 }
@@ -294,6 +313,9 @@ color: rgb(198, 134, 134);
   margin-left: 20px;
   height: 30px;
   background-color: rgb(179, 126, 126);
+}
+#commentM{
+  margin:auto;
 }
 #edit{
   float:right;

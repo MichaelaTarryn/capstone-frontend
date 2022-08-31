@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="user">
     <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div>
@@ -56,6 +56,7 @@
           <div class="col-md-4">{{ posts.caption }}</div>
         </div>
       </div>
+
       <hr />
     </div>
     <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>

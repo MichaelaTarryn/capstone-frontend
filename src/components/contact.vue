@@ -37,12 +37,12 @@
           <div  id="send" class="col-md-7">
             <h3>Send a message</h3>
           <div class="row p-1">
-            <div class="col-md-6"> <input type="text" id="full" placeholder="FULLNAME">  </div>
-            <div class="col-md-6"> <input type="text" id="gmail" placeholder="GMAIL"> </div>
+            <div class="col-md-6"> <input type="text" id="full" placeholder="FULLNAME" required>  </div>
+            <div class="col-md-6"> <input type="gmail" id="gmail" placeholder="GMAIL" required> </div>
           
           </div>
           <div class="row p-1">
-            <div class="col-md-12"> <input type="text" name="" id="mes" placeholder="MESSAGE">  </div>
+            <div class="col-md-12"> <input type="text" name="" id="mes" placeholder="MESSAGE" required>  </div>
 
           </div>
           <div class="row p-1">
@@ -59,12 +59,14 @@
         </div>
 
  </form>
+
+
     </div>
          
         
-   
+   <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
    </div>
-    <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
+    
  
 </template>
 
@@ -177,5 +179,17 @@ height:70vh;
   margin-top:75px;
   display: flex;
   gap:30px;
+}
+@media only screen and (min-width: 600px) {
+  /* For desktop: */
+  /* #submit{
+    width:100px;
+  }
+  #full{
+    width:200px;
+  }
+  #mes{
+    width:200px;
+  } */
 }
 </style>

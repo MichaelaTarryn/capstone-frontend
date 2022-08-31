@@ -59,6 +59,7 @@ export default createStore({
     userSinglePostswithoutcomments: null,
     users: null,
     post: null,
+    posts:null,
     token: null || localStorage.getItem('usertoken'),
   },
   getters: {},
@@ -101,8 +102,6 @@ export default createStore({
       fetch("https://minigramproject.herokuapp.com/post")
         .then((res) => res.json())
         .then((data) => {
-          // console.log("object");
-          // console.log(data);
           context.commit("setPost", data)
         });
     },
@@ -357,6 +356,62 @@ export default createStore({
         name: "landing"
       })
     },
+
+    //add a comment
+    addComment: async (context, payload,post) => {
+      const {
+        description,
+      } = payload;
+      fetch("https://minigramproject.herokuapp.com/comments" + post.postId, {
+          method: "POST",
+          body: JSON.stringify({
+            description: description
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": `${context.state.token}`,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getUserSinglePost", post.postId)
+          context.dispatch("getUserpostswithoutComments", post.postId)
+        });
+    },
+
+    //edit comment
+    EditCommit: async (context, comments) => {
+      fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
+          method: "PUT",
+          body: JSON.stringify(comments),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+        });
+    },
+
+    //delete a comment
+    deleteComment: async (context, comments) => {
+      fetch("https://minigramproject.herokuapp.com/comments" + comments.commentId, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg)
+
+        });
+    },
+
 
   },
   modules: {}
