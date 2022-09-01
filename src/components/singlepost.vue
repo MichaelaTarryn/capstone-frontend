@@ -228,8 +228,8 @@
         <input type="text" id="username" placeholder="Username">
       
         <input type="text"  placeholder="Enter comment" v-model="description">
-        <button id="addcomment"> Submit comment</button>
-        <button id="remove1"> Remove comment</button>
+        <button id="addcomment" @click="addComment" > Submit comment</button>
+        <button id="remove1" @click="this.$store.dispatch('deleteComment',getUserpostswithoutComments)"> Remove comment</button>
       </div>
     </div>
   </div>
@@ -274,6 +274,11 @@ export default {
   methods: {
     update() {
       this.$store.dispatch("EditPost", this.post)
+    },
+    addComment() {
+      return this.$store.dispatch("addComment", {
+        description: this.description,
+      });
     },
     addComment() {
       return this.$store.dispatch("addComment", {

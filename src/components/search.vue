@@ -30,11 +30,21 @@
         <input
           class="form-control me-2"
           type="search"
-          placeholder="Search"
+          placeholder="Enter CAPTION of post ..... please"
           aria-label="Search"
           v-model="search"
         />
       </div>
+      <div class="col-md-4">
+        <button id="filter" class="btn" type="button">
+      <select class="form-select" id="like" @change="sortLike">
+        <option value="All">Sort By Likes</option>
+        <option value="asc">Lowest To Highest</option>
+        <option value="desc">Highest to Lowest</option>
+      </select>
+    </button>
+      </div>
+
       <hr />
     </div>
     <div id="results">
@@ -74,11 +84,24 @@ export default {
   data() {
     return {
       search: "",
+      asc: true,
     };
   },
   methods: {
     Goback() {
       this.$store.dispatch("Goback");
+    },
+    sortLike() {
+      let up = document.getElementById("like").value;
+      if (up === "asc") {
+        this.$store.state.post.sort((a, b) => {
+          return a.post - b.post;
+        });
+      } else {
+        this.$store.state.post.sort((a, b) => {
+          return b.post - a.post;
+        });
+      }
     },
 
   },
@@ -86,10 +109,10 @@ export default {
     user() {
       return this.$store.state.user;
     },
+    // posts() {
+    //   return this.$store.state.post;
+    // },
     posts() {
-      return this.$store.state.post;
-    },
-    upost() {
       return this.$store.state.post?.filter((post) => {
         let isMatch = true;
         if (!post.caption.toLowerCase().includes(this.search)) {
@@ -127,9 +150,7 @@ export default {
   margin-bottom: 10px;
   margin-left: 30px;
 }
-#search1 {
-  margin-left: 90px;
-}
+
 .nav-link:hover {
   color: rgb(198, 134, 134);
   text-decoration-line: underline;

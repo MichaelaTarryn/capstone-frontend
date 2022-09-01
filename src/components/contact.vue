@@ -36,17 +36,13 @@
           </div>
           <div  id="send" class="col-md-7">
             <h3>Send a message</h3>
-          <div class="row p-1">
-            <div class="col-md-6"> <input type="text" id="full" placeholder="FULLNAME" required>  </div>
-            <div class="col-md-6"> <input type="gmail" id="gmail" placeholder="GMAIL" required> </div>
+          <div class="row">
+            <div><input type="text" id="full" placeholder="FULLNAME" required>  </div>  
+            <div><input type="gmail" id="gmail" placeholder="GMAIL" required> </div>
           
-          </div>
-          <div class="row p-1">
-            <div class="col-md-12"> <input type="text" name="" id="mes" placeholder="MESSAGE" required>  </div>
+            <div> <input type="text" name="" id="mes" placeholder="MESSAGE" required>  </div>
 
-          </div>
-          <div class="row p-1">
-            <div class="col-md-12"> <button id="submit"> Submit</button>  </div>
+            <div> <button id="submit"> Submit</button>  </div>
           </div>
           </div>
           <div id="icons" class="col-md-2">
@@ -130,8 +126,9 @@ h3{
 }
 
 .container2{
-  padding: 60px;
-height:70vh;
+  padding-top: 100px;
+  padding-bottom: 200px;
+height:auto;
 
   
 }
@@ -146,30 +143,33 @@ height:70vh;
   box-shadow: 5px 10px rgb(236, 186, 186);
 }
 #send{
+  height:auto;
+
   border-right: 6px solid rgb(236, 186, 186);
 }
 
 #full{
   margin-top:30px;
-  width: 300px;
+  width: 100%;
   margin-bottom: 10px;
 }
 #gmail{
-  width: 300px;
+  width: 100%;
   margin-top:30px;
 }
 #mes{
-  width: 645px;
+  width: 100%;
   margin-bottom: 10px;
 }
 #submit{
-  width: 645px;
+  width: 100%;
   margin-bottom: 10px;
   border: 2px solid rgb(198, 134, 134);
 }
 
 #pl{
-  height:40vh;
+  height:auto;
+  padding:20px;
   border-right: 6px solid rgb(236, 186, 186);
 
 }
@@ -180,16 +180,38 @@ height:70vh;
   display: flex;
   gap:30px;
 }
-@media only screen and (min-width: 600px) {
+@media screen and (max-width: 1400px) {
   /* For desktop: */
-  /* #submit{
-    width:100px;
+ 
+   #mes{
+    margin-top:2px;
+
+  } 
+   #submit{
+    width:300px;
   }
-  #full{
+ 
+  }
+
+  @media screen and (max-width:992px){
+    h3{
+      margin-left:1px;
+    }
+    #logo{
+      display: none;
+    }
+  
+  }
+  @media screen and (max-width:766px) {
+    #send,#pl{
+    border-right: var(--color-);
+  } 
+  }
+  @media screen  and (max-width:320px){
+    #submit{
     width:200px;
   }
-  #mes{
-    width:200px;
-  } */
-}
+  }
+   
+
 </style>

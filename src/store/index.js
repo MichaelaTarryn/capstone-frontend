@@ -29,7 +29,7 @@ export default createStore({
         img: "https://i.postimg.cc/GmRR6NvT/allofme.jpg"
       },
     ],
-    posts: [{
+    landingposts: [{
           usernames: "Kehlani",
           img: "https://i.postimg.cc/GmtbrfXM/baby.png",
           profile: "https://i.postimg.cc/LskCW9jG/profilepic.jpg",
@@ -38,7 +38,7 @@ export default createStore({
         },
         {
           usernames: "Hallie",
-          img: "https://i.postimg.cc/x8btKM3D/square-1470178174-hailee-ste.jpg",
+          img: "https://i.postimg.cc/5tVmqmSy/5testinhgnj.jpg",
           profile: "https://i.postimg.cc/XYN9W9Bj/profile.jpg",
           likes: "244 22 million",
           caption: "Now you see me now you don't",

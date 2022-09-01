@@ -68,6 +68,13 @@
          </div>
   </div>
   <div class="row">
+    <div class="col-md-12"><label for=""> If you post isn't PG13 PLEASE click on the warning button</label></div>
+          <div class="col-md-12"> 
+            
+        <button onClick="warning()">warning</button>
+         </div>
+  </div>
+  <div class="row">
     <div class="col-md-12"> 
       <div id="submit"><button id="submit" @click="addPost"> Submit</button> 
         </div>
@@ -95,6 +102,9 @@ export default {
         peopleTag: this.peopleTag
       });
     },
+    warning(){
+      document.getElementById("img2").style.filter="blur(10px)";
+    }
   },
 
   computed:{
