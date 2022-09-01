@@ -149,15 +149,16 @@ height:auto;
 }
 
 #full{
-  margin-top:30px;
+  margin-top:10px;
   width: 100%;
-  margin-bottom: 10px;
 }
 #gmail{
+  margin-top:10px;
   width: 100%;
-  margin-top:30px;
+
 }
 #mes{
+  margin-top:10px;
   width: 100%;
   margin-bottom: 10px;
 }

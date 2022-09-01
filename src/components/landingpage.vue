@@ -46,15 +46,15 @@
       <br />
       <div class="row">
         <div class="col-md-12">
-          <img :src="landingpost.img" id="pimh"  class="img-fluid" width="500" />
+          <img :src="landingpost.img" id="pimh"   class="img-fluid mx-auto" width="500" />
         </div>
         <br />
-        <div class="row justify-content-between" >
+        <div class="row " >
           <div class="col-md-6" id="cpation" >
             <button type="btn" id="likes"><i class="bi bi-star"></i> Likes :{{ landingpost.likes }}   </button>
             
           </div>
-          <div class="col-md-6" id="ik">{{ landingpost.caption }}</div>
+          <div class="col-md-6 justify-content-start" id="ik">{{ landingpost.caption }}</div>
         </div>
       </div>
 </div>
@@ -103,11 +103,14 @@ export default {
   margin-left: 20px;
   width: 90px;
 }
-
+#ik{
+  display: flex;
+  justify-content: flex-start;
+}
 #pimh {
   height: auto;
   margin-bottom: 20px;
-  margin-left:35%;
+  margin-left:10%;
 }
 #storys{
 padding-left:30px;
@@ -116,7 +119,7 @@ padding-left:30px;
 #likes {
   display: flex;
   width: 180px;
-  margin-left: 73%;
+  margin-left: 64%;
   height: 30px;
   background-color: rgb(179, 126, 126);
 }

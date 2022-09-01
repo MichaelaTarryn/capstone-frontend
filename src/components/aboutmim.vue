@@ -36,7 +36,12 @@
           Mimigram is a way to show beauty ,to spread the word to rally ,<br> to find community , bringing the whole world just at the end of a click.
          Founded in 2022 by Michaela Tarryn Ward.
         </div>
-        <div id="content"></div>
+        <div class="col-md-12">
+<div id="content">
+
+        </div>
+        </div>
+        
       </div>
       <div class="col-md-12">
        
@@ -89,8 +94,12 @@ color: rgb(198, 134, 134);
  }
 
 #content{
-  height:100vh;
-  background-image:url("https://i.postimg.cc/xCgGB8T9/social-media.jpg");
+height: 100vh;
+  width: auto;
+  background-image:url("https://i.postimg.cc/dt015qPr/social-media2.jpg");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
 }
+
 
 </style>
