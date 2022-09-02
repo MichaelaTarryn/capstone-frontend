@@ -22,59 +22,56 @@
   </div> --> 
   <div class="container">
 <div class="row">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
-    <div id="logo" class="col-md-1">
-      <a class="navbar-brand" href="#">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</a>
+  <nav class="navbar navbar-expand-lg "  >
+    <div id="logo" class="col-md-2">
+    <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
+       
     </div>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+ 
      
-<div class="col-md-2 " id="searches" >
-  <li class="nav-item active">
+<div id="searches" class="col-md-2 "  >
+
         <router-link class="nav-link" to="/landing">Home</router-link>
-      </li>
+      
 </div>
-<div class="col-md-2">
-      <li class="nav-item active" id="searches" >
+<div class="col-md-2" id="searches" >
+  
         <router-link class="nav-link" to="/search"
           >search followers
         </router-link>
-      </li>
+      
 </div>
-<div class="col-md-1">
-      <li class="nav-item active" id="searches" >
-        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-      </li>
-  </div>
-  <div class="col-md-2">
-    <li class="nav-item active" id="searches" >
+  <div class="col-md-2" id="searches" >
+    
         <router-link class="nav-link" to="/about">About Mimigram</router-link>
-      </li>
+   
   </div>
-      <div class="col-md-2">
-      <li class="nav-item active" id="searches" >
+      <div class="col-md-2" id="searches">
+      
         <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
-      </li>
+    
      </div>
-     <div class="col-md-2" id="searches" >
+     <div class="col-md-2" id="searches" v-if="user">
 
     
-      <li class="nav-item"  v-if="user">
+ 
         <router-link
           :to="{ name: 'profile', params: { id: user.id }}"
           class="nav-link"
           >View profile</router-link
         >
-      </li>
+      
    </div>
-    </ul>
+   
   </div>
 </nav>
 </div> 
+<hr/>
 </div>
 </template>
 
@@ -99,14 +96,38 @@ computed:{
   padding: auto;
   height: 30px;
 }
+hr{
+        height: 2px;
+        background-color: rgb(198, 134, 134);
+        border: none;
+    }
 
 #searches {
-  margin-top: 20px;
+  margin-left:30px;
+  margin-top: 8px;
   padding: auto;
   height: 30px;
 }
-.navbar-brand{
+#searches1 {
+  margin-left:40px;
+  margin-top: 8px;
+  padding: auto;
+  height: 30px;
+}
+#searches2 {
+  margin-left:20px;
+  margin-top: 8px;
+  padding: auto;
+  height: 30px;
+}
+h5{
 color: rgb(198, 134, 134);
 margin-left: 20px;
+}
+.nav-link:hover{
+    color: rgb(198, 134, 134);
+    text-decoration-line: underline;
+    border-bottom-color: #abcdef;
+
 }
 </style>
