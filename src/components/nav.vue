@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <!-- <div class="container">
      <div class="row">
       <div id="logo" class="col-md-3">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</div>
       <div id="searches" class="col-md-3">
@@ -19,15 +19,94 @@
       </div>
     </div>
     <hr />
+  </div> --> 
+  <div class="container">
+<div class="row">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
+    <div id="logo" class="col-md-1">
+      <a class="navbar-brand" href="#">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</a>
+    </div>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+     
+<div class="col-md-2 " id="searches" >
+  <li class="nav-item active">
+        <router-link class="nav-link" to="/landing">Home</router-link>
+      </li>
+</div>
+<div class="col-md-2">
+      <li class="nav-item active" id="searches" >
+        <router-link class="nav-link" to="/search"
+          >search followers
+        </router-link>
+      </li>
+</div>
+<div class="col-md-1">
+      <li class="nav-item active" id="searches" >
+        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
+      </li>
   </div>
+  <div class="col-md-2">
+    <li class="nav-item active" id="searches" >
+        <router-link class="nav-link" to="/about">About Mimigram</router-link>
+      </li>
+  </div>
+      <div class="col-md-2">
+      <li class="nav-item active" id="searches" >
+        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
+      </li>
+     </div>
+     <div class="col-md-2" id="searches" >
+
+    
+      <li class="nav-item"  v-if="user">
+        <router-link
+          :to="{ name: 'profile', params: { id: user.id }}"
+          class="nav-link"
+          >View profile</router-link
+        >
+      </li>
+   </div>
+    </ul>
+  </div>
+</nav>
+</div> 
+</div>
 </template>
 
 <script>
 export default {
-
+computed:{
+  user() {
+      return this.$store.state.user;
+    },
+}
 }
 </script>
 
 <style scoped>
+  .container {
+  width: auto;
+ min-height:fit-content;
+  background-color: rgb(250, 246, 246);
+}
+#logo {
+  margin-top: 20px;
+  padding: auto;
+  height: 30px;
+}
 
+#searches {
+  margin-top: 20px;
+  padding: auto;
+  height: 30px;
+}
+.navbar-brand{
+color: rgb(198, 134, 134);
+margin-left: 20px;
+}
 </style>

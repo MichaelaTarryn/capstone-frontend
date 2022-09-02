@@ -60,7 +60,6 @@
     </div>
          
         
-   <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
    </div>
     
  

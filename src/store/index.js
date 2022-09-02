@@ -358,12 +358,14 @@ export default createStore({
     },
 
     //add a comment
-    addComment: async (context, payload,post) => {
+    addComment: async (context, payload) => {
+      console.log(payload);
+      // console.log(post);
       const {
         description,
       } = payload;
-      fetch("https://minigramproject.herokuapp.com/comments" + post.postId, {
-          method: "POST",
+      fetch("https://minigramproject.herokuapp.com/comments/" + payload.post, {
+      method: "POST",
           body: JSON.stringify({
             description: description
           }),
@@ -374,16 +376,19 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           alert(data.msg);
-          context.dispatch("getUserSinglePost", post.postId)
-          context.dispatch("getUserpostswithoutComments", post.postId)
+          context.dispatch("getUserSinglePost", payload.post)
+          context.dispatch("getUserpostswithoutComments", payload.post)
         });
     },
 
     //edit comment
-    EditCommit: async (context, comments) => {
-      fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
-          method: "PUT",
+    EditComment: async (context, comments) => {
+      console.log(comments);
+      // fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
+      fetch(" http://localhost:3000/comments/" + comments.commentId, {
+          method: "PATCH",
           body: JSON.stringify(comments),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -392,13 +397,16 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           alert(data.msg);
+          context.dispatch("getUserSinglePost");
         });
     },
 
     //delete a comment
     deleteComment: async (context, comments) => {
-      fetch("https://minigramproject.herokuapp.com/comments" + comments.commentId, {
+      console.log(comments);
+      fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentId, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -408,7 +416,7 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           alert(data.msg)
-
+          context.dispatch("getUserSinglePost");
         });
     },
 

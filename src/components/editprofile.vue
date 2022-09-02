@@ -80,7 +80,6 @@
   </form>
 <hr>
 
-  <DIV ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED </DIV>
   </div>
 </template>
 

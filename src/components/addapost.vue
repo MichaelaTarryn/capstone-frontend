@@ -71,7 +71,7 @@
     <div class="col-md-12"><label for=""> If you post isn't PG13 PLEASE click on the warning button</label></div>
           <div class="col-md-12"> 
             
-        <button onClick="warning()">warning</button>
+        <button @click="warning()">warning</button>
          </div>
   </div>
   <div class="row">
@@ -83,8 +83,6 @@
   </div>
 </form>
 <hr>
-
-  <DIV ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED </DIV>
   </div>
 </template>
 

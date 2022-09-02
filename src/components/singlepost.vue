@@ -214,22 +214,24 @@
   </div>
   <div class="row" v-if="userSinglePosts">
     <div v-for="comment in userSinglePosts" :key="comment">
-      <div id="usercomment" class="col-md-6">
-        <label id="usercomment1" for="">{{comment.username}}</label> :
-      
-        <label id="comments" for="">{{comment.description}}</label> 
-        <button id="remove"> Remove comment</button>
+      <div id="usercomment" class="col-md-7">
+        <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
+        <input type="text" name="" id="usercomment1" v-model="comment.username" disabled>
+        <!-- <label id="comments" for="">{{comment.description}}</label>  -->
+        <input type="text" name="" v-model="comment.description" id="comments" disabled>
+        <button id="remove" @click="this.$store.dispatch('deleteComment',comment)"> Remove comment</button>
+        <button id="edit1" @click="edit"> Edit comment</button>
+        <button id="edit1" @click="this.$store.dispatch('EditComment',comment)"> Edit comment</button>
       </div>
     </div>
   </div>
   <div class="row">
     <div>
       <div id="commentM" class="col-md-10">
-        <input type="text" id="username" placeholder="Username">
+        <input type="text" id="username" placeholder="Username" v-model="user.username" disabled>
       
         <input type="text"  placeholder="Enter comment" v-model="description">
         <button id="addcomment" @click="addComment" > Submit comment</button>
-        <button id="remove1" @click="this.$store.dispatch('deleteComment',getUserpostswithoutComments)"> Remove comment</button>
       </div>
     </div>
   </div>
@@ -248,6 +250,7 @@ export default {
       peopleTag: "",
       addlocation: "",
       likes:0,
+      on : false
     }},
   computed: {
     user() {
@@ -275,14 +278,17 @@ export default {
     update() {
       this.$store.dispatch("EditPost", this.post)
     },
-    addComment() {
-      return this.$store.dispatch("addComment", {
-        description: this.description,
-      });
+    edit() {
+      document.getElementById('comments').disabled = this.on
+      document.getElementById('comments').focus() 
+      
+      this.on = !this.on
+      // this.$store.dispatch('EditComment',comment)
     },
     addComment() {
       return this.$store.dispatch("addComment", {
         description: this.description,
+        post: this.id,
       });
     },
   },
@@ -355,8 +361,16 @@ color: rgb(198, 134, 134);
   
   align-content: center;
 }
+/* #addcomment{
+width:60px;
+} */
 
 #remove{
+  margin-top: 20px;
+  display: flex;
+ float:right;
+}
+#edit1{
   margin-top: 20px;
   display: flex;
  float:right;

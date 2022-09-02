@@ -76,19 +76,21 @@
     <div class="col-md-4"  v-for="post in userPosts" :key="post" :post="post">
      
        <img :src="post.img" alt="" id="upost" class="img-thumbnail" >
-        <router-link
+       <div>
+         <router-link
             :to="{ name: 'single', params: { id: post.postId} }"
           >
-          <button> View more</button>
+          <button id="view"> View more</button>
       
       </router-link>
+       </div>
+       
     </div>
   </div>
   </div>
 
   <div class="row">
   </div>
-   <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
 </div>
 
 </template>
@@ -139,6 +141,9 @@ mounted() {
     /* background-color: rgb(179, 126, 126); */
     
 }
+#view{
+  margin-bottom: 20px;
+}
 #fullname1{
     margin-top:30px;
 }
@@ -186,7 +191,7 @@ h5{
 color: rgb(198, 134, 134);
 }
 #upost:hover{
-    color:rgba(0, 174, 255, 0.56);
+    opacity: 0.5;
 
 }
 #ouser{

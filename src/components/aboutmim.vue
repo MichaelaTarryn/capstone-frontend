@@ -41,18 +41,43 @@
 
         </div>
         </div>
+        <div class="col-md-12"  >
+          <div id="vision" data-aos="fade-up"
+            data-aos-duration="2000"
+           > Express yourself in new ways with the latest Instagram features. Connect with more people, build influence, and create compelling content that's distinctly yours.Share and grow your brand with our diverse, global community </div>
+        </div>
         
       </div>
-      <div class="col-md-12">
-       
+      <div class="row" id="vision1" >
+      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="header" >
+     <h1> VISION OF  𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h1>
+     </div>
+     <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" >
+        To solve three simple problems: Mobile photos always come out looking mediocre. Our awesome looking filters transform your photos into professional-looking snapshots. Sharing on multiple platforms is a pain – we help you take a picture once, then share it (instantly) on multiple services
+     
       </div>
     </div>
-    <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
+    <div class="row">
+    
+     <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="header1" >
+      To capture and share the world's moments.” Instagram branding revolves around creating visual impressions that leave its clients with long-lasting memories, and this is what this mission statement alludes to. It can be associated with the following components. Sharing of ideas.
+      </div>
+      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" >
+     <h1> MISSION OF  𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h1>
+     </div>
+     
+    </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+  import AOS from "aos";
 export default {
+  mounted(){
+    AOS.init();
+  },
     computed: {
     user() {
         return this.$store.state.user
@@ -79,6 +104,27 @@ export default {
     border-bottom-color: #abcdef;
 
 }
+#vision{
+  margin-top:40px;
+  height: 10vh;
+  padding-bottom:40px;
+}
+#vision1{
+  
+  height: 20vh;
+}
+#header{
+  text-align: center;
+  border-right: 6px solid rgb(236, 186, 186);
+ 
+}
+#header1{
+  border-right: 6px solid rgb(236, 186, 186);
+}
+
+#mission{
+ height: 20;
+}
 hr{
         height: 2px;
         background-color: rgb(198, 134, 134);
@@ -87,10 +133,14 @@ hr{
 h5{
 color: rgb(198, 134, 134);
 }
+h1{
+color: rgb(198, 134, 134);
+}
  #para{
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
   margin: auto;
+  margin-bottom: 20px;
  }
 
 #content{

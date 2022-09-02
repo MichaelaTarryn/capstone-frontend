@@ -4,16 +4,24 @@
     <router-link to="/about">About</router-link>
   </nav> -->
   <nav/>
+
   <router-view/>
+  <FooterC/>
 </template>
 <script>
+
 import nav from './components/nav.vue'
+
+import FooterC from './components/footerC.vue';
 export default{
   components: {
     nav,
-  }
+    FooterC
+}
+
 }
 </script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

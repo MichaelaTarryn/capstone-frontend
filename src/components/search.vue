@@ -44,6 +44,15 @@
       </select>
     </button>
       </div>
+      <div class="col-md-2">
+        <button id="filter" class="btn" type="button">
+      <select class="form-select" id="CAPTION2" @change="sortA">
+        <option value="All">Sort By alphabetically</option>
+        <option value="asc">Z To A</option>
+        <option value="desc">A to Z</option>
+      </select>
+    </button>
+      </div>
 
       <hr />
     </div>
@@ -95,16 +104,29 @@ export default {
       let up = document.getElementById("like").value;
       if (up === "asc") {
         this.$store.state.post.sort((a, b) => {
-          return a.post - b.post;
+          return a.likes - b.likes;
         });
       } else {
         this.$store.state.post.sort((a, b) => {
-          return b.post - a.post;
+          return b.likes - a.likes;
         });
       }
     },
+    sortA() {
+           let up = document.getElementById("CAPTION2").value;
+      return this.$store.state.post?.filter((post) => {
+        let isMatch = true;
+        if (!post.caption.toLowerCase().includes(this.search)) {
+          isMatch = false;
+        }
+        if (this.caption !== "All" && this.caption!== post.caption) {
+          isMatch = false;
+        }
+        return isMatch;
+      });
 
-  },
+  }
+},
   computed: {
     user() {
       return this.$store.state.user;
@@ -148,7 +170,9 @@ export default {
 }
 #first {
   margin-bottom: 10px;
-  margin-left: 30px;
+}
+#CAPTION2{
+  width:200px;
 }
 
 .nav-link:hover {

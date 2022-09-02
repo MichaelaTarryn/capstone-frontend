@@ -1,5 +1,6 @@
 <template>
   <div class="container" v-if="user">
+    <div section="navigation">
     <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div>
@@ -25,6 +26,7 @@
         >
       </div>
     </div>
+  </div>
     <hr/>
     <div class="row">
       <div id="storys" class="col-md-2" v-for="story in story" :key="story">
@@ -60,13 +62,13 @@
 </div>
       <hr />
     </div>
-    <div ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED</div>
   </div>
 </template>
 
 <script>
 export default {
   computed: {
+   
     story() {
       return this.$store.state.story;
     },
