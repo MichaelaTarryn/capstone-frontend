@@ -130,6 +130,7 @@ export default createStore({
               });
     },
     getUserpostswithoutComments:async(context,postId)=>{
+      
       const id = context.state.user.id
       fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
       .then((res) => res.json())
@@ -385,7 +386,6 @@ export default createStore({
 
     //edit comment
     EditComment: async (context, comments) => {
-      console.log(comments);
       // fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
       fetch(" http://localhost:3000/comments/" + comments.commentId, {
           method: "PATCH",
@@ -397,15 +397,16 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           alert(data.msg);
-          context.dispatch("getUserSinglePost");
+          console.log(data);
+          context.dispatch("getUserSinglePost", comments.postId);
+          context.dispatch("getUserpostswithoutComments", comments.postId)
         });
     },
 
     //delete a comment
     deleteComment: async (context, comments) => {
-      console.log(comments);
+      console.log(comments.postId);
       fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentId, {
           method: "DELETE",
           headers: {
@@ -416,7 +417,8 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           alert(data.msg)
-          context.dispatch("getUserSinglePost");
+          context.dispatch("getUserSinglePost", comments.postId);
+          context.dispatch("getUserpostswithoutComments", comments.postId)
         });
     },
 

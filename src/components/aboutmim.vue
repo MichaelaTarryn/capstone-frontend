@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div> 
       <div  id="searches" class="col-md-1">
@@ -28,7 +28,7 @@
         >
       </div>
     </div>
-    <hr/>
+    <hr/> -->
     <div class="row">
       <div class="col-md-12">
         <h5> About MIMIGRAM</h5>

@@ -1,7 +1,7 @@
 <template>
 
 <div class="container" v-if="user">
-<div class="row">
+<!-- <div class="row">
     <div  id=logo class="col-md-2">
       <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
     </div>
@@ -25,12 +25,26 @@
            <button id="Delete" @click="deleteuser">Delete Account</button>
     </div>
   </div>
-  <hr>
+  <hr> -->
   <div class="row">
-    <div class="col-md-3">
-       <img :src="user.profilePic" alt="" class="rounded-circle" >
+    <div class="col-md-2">
+      <router-link class="nav-link" to="/addapost">Add a Post </router-link>
     </div>
-     <div  id="ouser" class="col-md-6">
+    <div id="buttons" class="col-md-10">
+        <button id="logout" @click="Logout">Logout</button>
+           <button id="Delete" @click="deleteuser">Delete Account</button>
+    </div>
+  </div>
+ <hr>
+ <div class="row">
+ 
+  <div class="col-md-12 d-flex justify-content-center" >
+       <img :src="user.profilePic" alt="" class="rounded-circle"  >
+    </div>
+    
+ </div>
+  <div class="row">
+     <div  id="ouser" class="col-md-12">
         <h2>{{user.username}}</h2>
     </div>
   </div>
@@ -151,17 +165,19 @@ mounted() {
     margin-top:30px;
 
 }
+#box{
+  background-color: rgb(228, 215, 215);
+}
 #links{
     margin-top:30px;
     margin-bottom: 10px;
  
 }
 #buttons{
-  margin-top: 20px;
   HEIGHT:30PX;
   display: flex;
   justify-content: flex-end;
-  gap: 6PX;
+  gap: 10PX;
 }
 #edit{
     width:400px;
@@ -179,7 +195,7 @@ mounted() {
   padding: 20px;
 }
 .rounded-circle{
-  height:80px;
+  height:120px;
 }
 .nav-link:hover{
     color: rgb(198, 134, 134);
@@ -193,6 +209,11 @@ color: rgb(198, 134, 134);
 #upost:hover{
     opacity: 0.5;
 
+}
+#profile{
+  background-color: rgb(228, 215, 215);
+  height: auto;
+  margin-bottom: 20px;
 }
 #ouser{
   margin-top:20px;

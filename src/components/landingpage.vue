@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="user">
-    <div section="navigation">
+    <!-- <div section="navigation">
     <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div>
@@ -26,8 +26,8 @@
         >
       </div>
     </div>
-  </div>
-    <hr/>
+  </div> -->
+    <!-- <hr/> -->
     <div class="row">
       <div id="storys" class="col-md-2" v-for="story in story" :key="story">
         <img :src="story.img" alt="..." class="rounded-circle" />
@@ -116,6 +116,7 @@ export default {
 }
 #storys{
 padding-left:30px;
+margin-top: 20px;
 }
 
 #likes {
@@ -127,7 +128,7 @@ padding-left:30px;
 }
 #logo {
   margin-top: 20px;
-  padding: auto;
+  /* padding: auto; */
   height: 30px;
 }
 

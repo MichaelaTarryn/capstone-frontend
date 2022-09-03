@@ -1,28 +1,6 @@
 <template>
   <div class="container" v-if="user">
     <div class="row">
-      <div id="logo" class="col-md-2"><h5>𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5></div>
-      <div  id="searches" class="col-md-2">
-   <router-link class="nav-link" to="/landing">Home</router-link>
-    </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/search"
-          >search followers
-        </router-link>
-      </div>
-      <div id="searches" class="col-md-3">
-        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-      </div>
-      <div id="searches" class="col-md-3">
-        <router-link
-          :to="{ name: 'profile', params: { id: user.id } }"
-          class="nav-link"
-          >View profile</router-link
-        >
-      </div>
-    </div>
-    <hr />
-    <div class="row">
       <div id="first" class="col-md-2">
         <button class="btn" @click="Goback">Go back</button>
       </div>
@@ -46,7 +24,7 @@
       </div>
       <div class="col-md-2">
         <button id="filter" class="btn" type="button">
-      <select class="form-select" id="CAPTION2" @change="sortA">
+      <select class="form-select" id="CAPTION2" @change="sorta">
         <option value="All">Sort By alphabetically</option>
         <option value="asc">Z To A</option>
         <option value="desc">A to Z</option>
@@ -56,9 +34,9 @@
 
       <hr />
     </div>
-    <div id="results">
-    </div>
-    <div class="container" v-if="posts">
+    <!-- <div id="results">
+    </div> -->
+    <div class="" v-if="posts">
       <div class="row">
         <div class="col-md-4" v-for="post in posts"
         :key="post">
@@ -76,7 +54,6 @@
 </div>
         </div>
       </div> 
-      <DIV ID="FOOTER">Copyright @2022 MIMIGRAM.All RIGHT RESERVED </DIV>
     </div>
    
     <div v-else>
@@ -112,18 +89,18 @@ export default {
         });
       }
     },
-    sortA() {
+    sorta() {
+      // console.log("object");
            let up = document.getElementById("CAPTION2").value;
-      return this.$store.state.post?.filter((post) => {
-        let isMatch = true;
-        if (!post.caption.toLowerCase().includes(this.search)) {
-          isMatch = false;
-        }
-        if (this.caption !== "All" && this.caption!== post.caption) {
-          isMatch = false;
-        }
-        return isMatch;
-      });
+           if (up === "asc") {
+        this.$store.state.post.sort((a, b) => {
+          return b.caption > a.caption;
+        });
+      } else {
+        this.$store.state.post.sort((a, b) => {
+          return a.caption  > b.caption;
+        });
+      }
 
   }
 },
@@ -154,7 +131,8 @@ export default {
 
 <style scoped>
 .container {
-  height: 100vh;
+  min-height:fit-content;
+  /* height: 100vh; */
   background-color: rgb(250, 246, 246);
   /* background-color: rgb(179, 126, 126); */
 }

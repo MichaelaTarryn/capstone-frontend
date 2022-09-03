@@ -52,7 +52,7 @@ export default {
 
 <style scoped>
 .container{
-    background-color: rgb(245, 235, 245);
+    background-color: rgb(250, 246, 246);
     margin: auto;   
     height:50vh;
     width:660px;

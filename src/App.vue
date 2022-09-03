@@ -3,19 +3,19 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav> -->
-  <nav/>
+  <Nav/>
 
   <router-view/>
   <FooterC/>
 </template>
 <script>
 
-import nav from './components/nav.vue'
+import Nav from '@/components/nav.vue';
 
 import FooterC from './components/footerC.vue';
 export default{
   components: {
-    nav,
+    Nav,
     FooterC
 }
 
@@ -31,16 +31,16 @@ export default{
   color: #2c3e50;
 }
 
-/* nav {
+ nav {
   padding: 30px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #1c1d1e;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
-}  */
+  color: rgb(239, 175, 175);
+}  
 </style>

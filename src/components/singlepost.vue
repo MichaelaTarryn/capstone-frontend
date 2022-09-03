@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
     <div  id=logo class="col-md-2">
       <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
     </div>
@@ -22,7 +22,7 @@
     </div>
   </div>
   
-  <hr>
+  <hr> -->
   
   <div class="row">
     <div class="col-md-3">
@@ -218,10 +218,13 @@
         <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
         <input type="text" name="" id="usercomment1" v-model="comment.username" disabled>
         <!-- <label id="comments" for="">{{comment.description}}</label>  -->
-        <input type="text" name="" v-model="comment.description" id="comments" disabled>
+        <input type="text" name="" v-model="comment.description" :id="'comments'+comment.commentId" disabled>
+        
         <button id="remove" @click="this.$store.dispatch('deleteComment',comment)"> Remove comment</button>
-        <button id="edit1" @click="edit"> Edit comment</button>
-        <button id="edit1" @click="this.$store.dispatch('EditComment',comment)"> Edit comment</button>
+
+        <button id="edit1" @click="edit(comment.commentId)">Turn disable off Edit comment </button>
+        
+        <button id="edit1" @click="this.$store.dispatch('EditComment',comment)"> Submit changes comment</button>
       </div>
     </div>
   </div>
@@ -278,10 +281,9 @@ export default {
     update() {
       this.$store.dispatch("EditPost", this.post)
     },
-    edit() {
-      document.getElementById('comments').disabled = this.on
-      document.getElementById('comments').focus() 
-      
+    edit(i) {
+      document.getElementById('comments'+i).disabled = this.on
+      document.getElementById('comments'+i).focus() 
       this.on = !this.on
       // this.$store.dispatch('EditComment',comment)
     },
