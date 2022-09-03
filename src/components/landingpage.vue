@@ -59,10 +59,13 @@
           <div class="col-md-6 justify-content-start" id="ik">{{ landingpost.caption }}</div>
         </div>
       </div>
-</div>
+</div> 
       <hr />
     </div>
+    <button> <i class="fa-solid fa-mandolin"></i></button>
+   
   </div>
+ 
 </template>
 
 <script>
