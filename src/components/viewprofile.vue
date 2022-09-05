@@ -184,7 +184,7 @@ mounted() {
     margin-bottom: 10px;
 }
 .img-thumbnail{
-  height: 370px;
+  height: 500px;
   width:350px;
   margin-bottom:20px;
 }
