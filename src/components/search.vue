@@ -15,27 +15,22 @@
         />
       </div>
       <div class="col-md-3">
-        <!-- <button id="filter" class="btn" type="button"> -->
       <select class="form-select" id="like" @change="sortLike">
         <option value="All">Sort By Likes</option>
         <option value="asc">Lowest To Highest</option>
         <option value="desc">Highest to Lowest</option>
       </select>
-    <!-- </button> -->
       </div>
       <div class="col-md-4">
-        <!-- <button  class="btn" type="button"> -->
       <select class="form-select" id="CAPTION2" @change="sorta" v-model="name">
         <option value="All">Sort By alphabetically</option>
         <option value="asc">Z To A</option>
         <option value="desc">A to Z</option>
       </select>
-    <!-- </button> -->
+  
       </div>
       <hr />
     </div>
-    <!-- <div id="results">
-    </div> -->
     <div class="" v-if="posts">
       <div class="row">
         <div class="card mx-auto m-3" v-for="post in posts"
@@ -68,12 +63,13 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       search: "",
       asc: true,
-      name:ALL,
+     name:"All",
     };
   },
   methods: {
@@ -97,11 +93,14 @@ export default {
            let up = this.name;
            if (up === "asc") {
         this.$store.state.post.sort((a, b) => {
-          return b.caption > a.caption;
+          b.caption > a.caption
+           return -1;
+        
         });
       } else {
         this.$store.state.post.sort((a, b) => {
-          return a.caption  > b.caption;
+         a.caption  > b.caption
+          return -1;
         });
       }
 

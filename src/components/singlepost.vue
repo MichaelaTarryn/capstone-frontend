@@ -251,7 +251,7 @@
       </div>
       <div class="row" v-if="userSinglePosts">
         <div v-for="comment in userSinglePosts" :key="comment">
-          <div id="usercomment" class="col-md-7">
+          <div id="usercomment" class="col-md-10">
             <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
             <input
               type="text"
@@ -277,7 +277,7 @@
             </button>
 
             <button id="btnedit1" @click="edit(comment.commentId)">
-              Turn Edit comment
+             Edit comment
             </button>
 
             <button 
@@ -306,7 +306,7 @@ where commentid = ?
             />
 
             <input
-              type="text"
+              type="text" id="description1"
               placeholder="Enter comment"
               v-model="description"
             />
@@ -386,19 +386,24 @@ export default {
   background-color: rgb(250, 246, 246);
   /* background-color: rgb(179, 126, 126); */
 }
-.nav-link:hover {
-  color: rgb(198, 134, 134);
-  text-decoration-line: underline;
-  border-bottom-color: #abcdef;
-}
+
 #username {
   margin-top: 20px;
+  margin: auto;
+  float: left;
+  margin-left:100px;
 }
+
+#description1{
+  width:300px;
+  float: left;
+}
+
 h5 {
   color: rgb(198, 134, 134);
 }
 .img-fluid {
-  height: 350px;
+  height: auto;
   width: 350px;
   margin-bottom: 20px;
 }
@@ -408,7 +413,14 @@ h5 {
   background-color: rgb(179, 126, 126);
 }
 #commentM {
-  margin: auto;
+
+  background-color: rgb(255, 253, 253);
+  border: 2px solid rgb(179, 126, 126);
+  margin: auto; 
+   margin-top:20px;
+   padding-bottom: 10px;
+   align-content: center;
+   padding:30px;
 }
 #edit {
   float: right;
@@ -436,6 +448,7 @@ h5 {
   margin-top: 20px;
   background-color: rgb(236, 226, 226);
   margin-bottom: 20px;
+
 }
 
 #comments {
@@ -448,6 +461,11 @@ width:60px;
 } */
 
 #remove {
+  margin-top: 20px;
+  display: flex;
+  float: right;
+}
+#btnedit1{
   margin-top: 20px;
   display: flex;
   float: right;

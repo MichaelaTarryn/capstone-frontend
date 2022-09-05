@@ -12,10 +12,10 @@
           <div  id="send" class="col-md-7">
             <h3>Send a message</h3>
           <div class="row">
-            <div><input type="text" id="full" placeholder="FULLNAME" required>  </div>  
-            <div><input type="gmail" id="gmail" placeholder="GMAIL" required> </div>
+            <div><input type="text" id="full" name="fullname" placeholder="FULLNAME" required>  </div>  
+            <div><input type="email" id="gmail" name="gmail" placeholder="GMAIL" required> </div>
           
-            <div> <input type="text" name="" id="mes" placeholder="MESSAGE" required>  </div>
+            <div> <input type="text" name="message" id="mes" placeholder="MESSAGE" required>  </div>
 
             <div> <button id="submit"> Submit</button>  </div>
           </div>

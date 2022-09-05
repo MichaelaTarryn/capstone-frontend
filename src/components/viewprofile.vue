@@ -218,5 +218,16 @@ color: rgb(198, 134, 134);
 #ouser{
   margin-top:20px;
   justify-content: baseline;
-}
+}@media screen and (max-width:768px){
+    #buttons{
+      justify-content: center;
+    }
+  
+  }
+  @media screen and (max-width:445px){
+   
+  #edit{
+    width:200px;
+  }
+  }
 </style>

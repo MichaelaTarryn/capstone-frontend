@@ -25,7 +25,7 @@
         >
       </div>
   </div>
-     --> --> 
+     --> 
      <hr>
   <div class="row">
     <div id="first" class="col-md-2">
@@ -203,5 +203,38 @@ color: rgb(198, 134, 134);
 }
 #FOOTER{
   MARGIN-TOP:40PX;
+}
+@media screen  and (max-width: 768px){
+  #caption{
+    width:400px;
+  }
+  #img2{
+    width: 400px;
+  }
+  #tag1{
+    width: 400px;
+  }
+}
+@media screen  and (max-width: 534px){
+  #caption{
+    width:280px;
+  }
+  #img2{
+    width: 280px;
+  }
+  #tag1{
+    width: 280px;
+  }
+}
+@media screen  and (max-width: 325px){
+  #caption{
+    width:250px;
+  }
+  #img2{
+    width: 250px;
+  }
+  #tag1{
+    width: 250px;
+  }
 }
 </style>
