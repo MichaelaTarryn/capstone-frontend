@@ -1,5 +1,5 @@
 <template>
-  <nav class="container navbar navbar-expand-lg bg-light fixed-top">
+  <nav class="container navbar navbar-expand-lg bg-light sticky-top">
     <div class="container">
       <a class="navbar-brand" href="#">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</a>
       <button

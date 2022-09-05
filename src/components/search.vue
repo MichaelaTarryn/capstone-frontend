@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-4">
         <!-- <button  class="btn" type="button"> -->
-      <select class="form-select" id="CAPTION2" @change="sorta">
+      <select class="form-select" id="CAPTION2" @change="sorta" v-model="name">
         <option value="All">Sort By alphabetically</option>
         <option value="asc">Z To A</option>
         <option value="desc">A to Z</option>
@@ -73,6 +73,7 @@ export default {
     return {
       search: "",
       asc: true,
+      name:ALL,
     };
   },
   methods: {
@@ -93,7 +94,7 @@ export default {
     },
     sorta() {
       // console.log("object");
-           let up = document.getElementById("CAPTION2").value;
+           let up = this.name;
            if (up === "asc") {
         this.$store.state.post.sort((a, b) => {
           return b.caption > a.caption;
@@ -172,7 +173,7 @@ h5 {
     height: 20vw;
    object-fit: cover; 
 }
-@media screen and (max-width:1318px){
+/* @media screen and (max-width:1318px){
     .card-img-top{
       height:20vw;
     }
@@ -183,5 +184,5 @@ h5 {
       objext:20vw;
     }
   
-  }
+  } */
 </style>

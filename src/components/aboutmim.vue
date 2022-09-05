@@ -52,7 +52,7 @@
       <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="header" >
      <h1> VISION OF  𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h1>
      </div>
-     <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" >
+     <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="mission2" >
         To solve three simple problems: Mobile photos always come out looking mediocre. Our awesome looking filters transform your photos into professional-looking snapshots. Sharing on multiple platforms is a pain – we help you take a picture once, then share it (instantly) on multiple services
      
       </div>
@@ -62,7 +62,7 @@
      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="header1" >
       To capture and share the world's moments.” Instagram branding revolves around creating visual impressions that leave its clients with long-lasting memories, and this is what this mission statement alludes to. It can be associated with the following components. Sharing of ideas.
       </div>
-      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" >
+      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000" id="mission" >
      <h1> MISSION OF  𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h1>
      </div>
      
@@ -153,5 +153,115 @@ height: 100vh;
   background-repeat: no-repeat;
 }
 
+@media screen and (max-width:992px){
+  #vision1{
+    margin-top: 40px;
+  }
+  #mission{
+    margin-top:60px;
+  }
+  }
+  @media screen and (max-width:769px){
+    #mission2{
+    margin-bottom:60px;
+  }
+  }
+  @media screen and (max-width:768px){
+  #header{
+    margin-top:20xp;
+    border-right: var(--color-);
+  }
+  #mission2{
+    margin-bottom:50px;
+  }
+  #header1{
+    margin-top:60px;
+    border-right: var(--color-);
+  }
+   /* #vision1{
+    margin-top: 40px;
+  }  */
+  #mission{
+    margin-top:50px;
+    margin-bottom: 20px;
+    border-right: var(--color-);
+  } 
+  }
+  @media screen and (max-width:560px){
+  #mission{
+    margin-top:10px;
+  }
+  }
+  @media screen and (max-width:424px){
+
+  h1{
+    font-size: medium;
+  }
+  #mission2{
+    margin-top:10px;
+    font-size: medium;
+  }
+  #header{
+    margin-top:20px;
+  }
+  #header1{
+    margin-top:120px;
+  }
+  #para{
+    font-size: medium;
+  }
+  #mission{
+margin-bottom: 40px;
+  }
+  }
+  @media screen and (max-width:350px){
+    h1{
+      margin-top:20px;
+    }
+    #header{
+    padding:20px;
+    }
+    #header1{
+    padding-top:120px;
+    }
+    #mission2{
+    padding:25px;
+    }
+  }
+  @media screen and (max-width:349px){
+    h1{
+      margin-top:20px;
+    }
+    #header{
+    padding:20px;
+    }
+    #header1{
+    padding-top:120px;
+    }
+    #mission2{
+    padding:25px;
+    }
+  }
+  @media screen and (max-width:307px){
+    h1{
+      margin-top:20px;
+    }
+    #header{
+    padding:10px;
+    }
+    #header1{
+    font-size:small
+    }
+    #para{
+      font-size: small;
+    }
+    #mission2{
+    padding:20px;
+    font-size:small
+    }
+    #vision{
+      font-size: small;
+    }
+  }
 
 </style>
