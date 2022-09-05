@@ -18,7 +18,7 @@
         <router-link class="nav-link" to="/profile">View profile</router-link>
     </div>
   </div>
-  <hr> -->
+-->  <hr> 
   <div class="row">
     <div id="first" class="col-md-2">
       <router-link :to="{ name: 'profile', params: { id: user.id }}">

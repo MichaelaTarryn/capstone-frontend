@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="container navbar navbar-expand-lg bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</a>
       <button
@@ -13,36 +13,45 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div
+        class="collapse navbar-collapse justify-content-around"
+        id="navbarNav"
+      >
         <!-- <div class="navbar-nav"> -->
-          <div id="searches" class="col-md-2">
-            <router-link class="nav-item" to="/landing">Home</router-link>
-          </div>
-          <div class="col-md-2" id="searches">
-            <router-link class="nav-item" to="/search"
-              >search followers
-            </router-link>
-          </div>
-          <div class="col-md-2" id="searches">
-            <router-link class="nav-item" to="/about"
-              >About Mimigram</router-link
-            >
-          </div>
-          <div class="col-md-2" id="searches">
-            <router-link class="nav-item" to="/contact"
-              >Contact Mimigram</router-link
-            >
-          </div>
-          <div class="col-md-2" id="searches" v-if="user">
-            <router-link
-              :to="{ name: 'profile', params: { id: user.id } }"
-              class="nav-item"
-              >View profile</router-link
-            >
-          </div>
-        <!-- </div> -->
+          <!-- <div id="searches" class="col-md-2"> -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link class="nav-link"  to="/landing">Home</router-link>
+            </li>
+
+            <li class="nav-item">
+              <router-link class="nav-link" to="/search">search followers </router-link>
+            </li>
+
+            <!-- </div> -->
+            <!-- <div class="col-md-2" id="searches"> -->
+            <!-- </div> -->
+            <!-- <div class="col-md-2" id="searches"> -->
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">About Mimigram</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
+            </li>
+            <!-- </div> -->
+            <!-- <div class="col-md-2" id="searches"> -->
+            <!-- </div> -->
+            <!-- <div class="col-md-2" id="searches" v-if="user"> -->
+            <li class="nav-item" v-if="user">
+              <router-link class="nav-link" :to="{ name: 'profile', params: { id: user.id } }"
+                >View profile</router-link
+              >
+            </li>
+            <!-- </div> -->
+          </ul>
+        </div>
       </div>
-    </div>
+    <!-- </div> -->
   </nav>
 
   <!-- <nav class="navbar navbar-expand-lg bg-light">
@@ -158,8 +167,8 @@ export default {
 
 <style scoped>
 .container {
-  width: 1300px;
-   min-height: fit-content; 
+
+  min-height: fit-content;
   background-color: rgb(250, 246, 246);
 }
 #logo {
@@ -167,7 +176,7 @@ export default {
   padding: auto;
   height: 30px;
 }
-#searches1 {
+/* #searches1 {
   margin-left: 40px;
   margin-top: 8px;
   padding: auto;
@@ -178,13 +187,12 @@ export default {
   margin-top: 8px;
   padding: auto;
   height: 30px;
-}
-.navbar-brand{
+} */
+.navbar-brand {
   color: rgb(198, 134, 134);
   margin-left: 20px;
   margin-bottom: 10px;
 }
-
 
 hr {
   height: 2px;
@@ -193,20 +201,19 @@ hr {
 }
 
 nav a:hover {
-        color: rgb(198, 134, 134)!important;
-    }
+  color: rgb(198, 134, 134) !important;
+}
 
-#searches2 {
+/* #searches2 {
   margin-left: 20px;
   margin-top: 8px;
   padding: auto;
   height: 30px;
-}
+} */
 
 .nav-link:hover {
   color: rgb(198, 134, 134);
   text-decoration-line: underline;
   border-bottom-color: #abcdef;
 }
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="user">
     <!-- <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div> 
@@ -28,7 +28,7 @@
         >
       </div>
     </div>
-    <hr/> -->
+  -->   <hr/>
     <div class="row">
       <div class="col-md-12">
         <h5> About MIMIGRAM</h5>
@@ -69,6 +69,8 @@
     </div>
     </div>
 
+  </div>
+  <div v-else> <h1> Please login in , thank you</h1>
   </div>
 </template>
 

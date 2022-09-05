@@ -25,7 +25,7 @@
            <button id="Delete" @click="deleteuser">Delete Account</button>
     </div>
   </div>
-  <hr> -->
+   --><hr>
   <div class="row">
     <div class="col-md-2">
       <router-link class="nav-link" to="/addapost">Add a Post </router-link>

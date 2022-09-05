@@ -1,5 +1,5 @@
 <template>
-   <div class="container">
+   <div class="container" v-if="user">
     <!-- <div class="row">
       <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
       </div> 
@@ -25,7 +25,7 @@
         >
       </div>
     </div>
-    <hr/> -->
+   --> <hr/> 
       <div class="container2">
         <form  action="https://formspree.io/f/xayknzky"
   method="POST">
@@ -61,6 +61,8 @@
          
         
    </div>
+   <div v-else> <h1> Please login in , thank you</h1>
+  </div>
     
  
 </template>

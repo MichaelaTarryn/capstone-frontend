@@ -25,7 +25,8 @@
         >
       </div>
   </div>
-  <hr> -->
+     --> --> 
+     <hr>
   <div class="row">
     <div id="first" class="col-md-2">
 <button class="btn" @click="Goback">Go back</button>

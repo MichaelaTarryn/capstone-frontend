@@ -147,7 +147,7 @@
             <i class="bi bi-star"></i>
           </button>
           {{ getUserpostswithoutComments.likes }}
-          <button
+          <button v-if="me"
             type="button"
             class="btn"
             data-bs-toggle="modal"
@@ -155,7 +155,7 @@
           >
             Edit Post
           </button>
-          <button
+          <button v-if="me"
             btn="btn"
             type="button"
             id="btnD"
@@ -269,7 +269,7 @@
               disabled
             />
 
-            <button
+            <button v-if="me"
               id="remove"
               @click="this.$store.dispatch('deleteComment', comment)"
             >
@@ -280,7 +280,7 @@
               Turn Edit comment
             </button>
 
-            <button
+            <button 
               id="edit1"
               @click="this.$store.dispatch('EditComment', comment)"
             >
@@ -345,14 +345,18 @@ export default {
     getUserpostswithoutComments() {
       return this.$store.state.userSinglePostswithoutcomments;
     },
+    me() {
+      return this.$store.state.me;
+    },
   },
   mounted() {
-    this.$store.dispatch("getUserSinglePost", this.$route.params.id),
+    this.$store.dispatch("getUserSinglePost", this.$route.params.id);
       this.$store.dispatch(
         "getUserpostswithoutComments",
         this.$route.params.id
-      ),
+      );
       this.$store.dispatch("getPost");
+      this.$store.dispatch("checkme");
   },
 
   methods: {

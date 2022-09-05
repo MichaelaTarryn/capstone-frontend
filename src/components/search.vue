@@ -1,47 +1,47 @@
 <template>
   <div class="container" v-if="user">
+
     <div class="row">
       <div id="first" class="col-md-2">
         <button class="btn" @click="Goback">Go back</button>
       </div>
-      <div id="search1" v-if="posts" class="col-md-4">
+      <div v-if="posts" class="col-md-3">
         <input
-          class="form-control me-2"
+          class="form-control "
           type="search"
           placeholder="Enter CAPTION of post ..... please"
           aria-label="Search"
           v-model="search"
         />
       </div>
-      <div class="col-md-4">
-        <button id="filter" class="btn" type="button">
+      <div class="col-md-3">
+        <!-- <button id="filter" class="btn" type="button"> -->
       <select class="form-select" id="like" @change="sortLike">
         <option value="All">Sort By Likes</option>
         <option value="asc">Lowest To Highest</option>
         <option value="desc">Highest to Lowest</option>
       </select>
-    </button>
+    <!-- </button> -->
       </div>
-      <div class="col-md-2">
-        <button id="filter" class="btn" type="button">
+      <div class="col-md-4">
+        <!-- <button  class="btn" type="button"> -->
       <select class="form-select" id="CAPTION2" @change="sorta">
         <option value="All">Sort By alphabetically</option>
         <option value="asc">Z To A</option>
         <option value="desc">A to Z</option>
       </select>
-    </button>
+    <!-- </button> -->
       </div>
-
       <hr />
     </div>
     <!-- <div id="results">
     </div> -->
     <div class="" v-if="posts">
       <div class="row">
-        <div class="col-md-4" v-for="post in posts"
-        :key="post">
-          <div class="card" style="width: 18rem;">
-  <img class="card-img-top" :src="post.img" alt="Card image cap">
+        <div class="card mx-auto m-3" v-for="post in posts"
+        :key="post" style="width: 18rem;">
+        <!-- <div class="col-md-4" > -->
+  <img class="card-img-top img-fluid" :src="post.img" alt="Card image cap">
   <div class="card-body">
     <router-link
             :to="{ name: 'single', params: { id: post.postId} }"
@@ -50,7 +50,7 @@
       
       </router-link>
     <p class="card-text">{{post.caption}}</p>
-  </div>
+  <!-- </div> -->
 </div>
         </div>
       </div> 
@@ -60,6 +60,8 @@
       <h2>
          Loading ...  Your patients is deeply appreciated
     </h2></div>
+  </div>
+  <div v-else> <h1> Please login in , thank you</h1>
   </div>
 
   
@@ -150,7 +152,7 @@ export default {
   margin-bottom: 10px;
 }
 #CAPTION2{
-  width:200px;
+  /* width:228px; */
 }
 
 .nav-link:hover {
@@ -165,8 +167,21 @@ h5 {
   margin-left:60px;
   margin-bottom: 20px;
 }
-.card-img-top{
-  width:18rem;
-  height:260px;
+.card-img-top {
+    width: 100%;
+    height: 20vw;
+   object-fit: cover; 
 }
+@media screen and (max-width:1318px){
+    .card-img-top{
+      height:20vw;
+    }
+  
+  }
+  @media screen and (max-width:981px){
+    .card-img-top{
+      objext:20vw;
+    }
+  
+  }
 </style>

@@ -1,33 +1,6 @@
 <template>
   <div class="container" v-if="user">
-    <!-- <div section="navigation">
-    <div class="row">
-      <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/search"
-          >search followers
-        </router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/about">About Mimigram</router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
-      </div>
-      <div v-if="user" id="searches" class="col-md-2">
-        <router-link
-          :to="{ name: 'profile', params: { id: user.id }}"
-          class="nav-link"
-          >View profile</router-link
-        >
-      </div>
-    </div>
-  </div> -->
-    <!-- <hr/> -->
+    <hr>
     <div class="row">
       <div id="storys" class="col-md-2" v-for="story in story" :key="story">
         <img :src="story.img" alt="..." class="rounded-circle" />
@@ -62,8 +35,9 @@
 </div> 
       <hr />
     </div>
-    <button> <i class="fa-solid fa-mandolin"></i></button>
    
+  </div>
+  <div v-else> <h1> Please login in , thank you</h1>
   </div>
  
 </template>
@@ -160,4 +134,32 @@ color: rgb(198, 134, 134);
 margin-left: 20px;
 }
 
+@media screen and (max-width:993px){
+    #likes{
+      
+      margin-left:50%;
+    }
+  
+  }
+  @media screen and (max-width:769px){
+    #likes{
+      margin-left:35%;
+    }
+
+    #ik{
+      margin-left:35%;
+    }
+  
+  }
+  @media screen and (max-width:376px){
+    #likes{
+      margin-left:15%;
+      margin-bottom: 5px;
+    }
+
+    #ik{
+      margin-left:15%;
+    }
+  
+  }
 </style>
