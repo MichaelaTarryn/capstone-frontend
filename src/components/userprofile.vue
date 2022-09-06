@@ -1,26 +1,17 @@
 <template>
-   <hr>
+   
+   <div class="container">
+    <hr>
   <div class="row">
-    <div class="col-md-2">
-      <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-    </div>
-    <!-- <div class="col-md-2">
-      <router-link
-            :to="{ name: 'single', params: { id: post.postId} }"
-          > -->
-          <!-- <button id="view"> View more</button> -->
-        <!-- </router-link> -->
-    <!-- </div>  -->
-    <div id="buttons" class="col-md-8">
-        <button id="logout" @click="Logout">Logout</button>
-           <button id="Delete" @click="deleteuser">Delete Account</button>
-    </div>
+     <div class="col-md-2">
+      <button> Go back</button>
+     </div> 
   </div>
  <hr>
  <div class="row">
  <div class="col-md-12 d-flex justify-content-center" >
        <img :src="userprofile.profilePic" alt="" class="rounded-circle"  >
-    </div> 
+    </div>  
   
     
  </div>
@@ -75,6 +66,7 @@
 
   <div class="row">
   </div>
+   </div>
 
 </template>
 

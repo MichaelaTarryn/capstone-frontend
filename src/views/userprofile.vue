@@ -1,6 +1,5 @@
 <template>
   <Userprofile :id="id" />
-  <h2>lolsss</h2>
     
 </template>
 <script>
