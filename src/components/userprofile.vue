@@ -1,90 +1,57 @@
 <template>
-  <div class="container" v-if="user">
-    <div  id=logo class="col-md-2">
-      <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
-    </div>
-    <div  id="searches" class="col-md-1">
-   <router-link class="nav-link" to="/landing">Home</router-link>
-    </div>
-    <div  id="searches" class="col-md-2">
-   <router-link class="nav-link" to="/search">search followers </router-link>
-    </div>
-    <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/about">About Mimigram</router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
-      </div>
-    <div  id="searches" class="col-md-2">
-     <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-    </div>
-    <!-- <div id="buttons" class="col-md-11">
-        <button id="logout" @click="Logout">Logout</button>
-           <button id="Delete" @click="deleteuser">Delete Account</button>
-    </div> -->
-  </div>
-   --><hr>
+   <hr>
   <div class="row">
     <div class="col-md-2">
       <router-link class="nav-link" to="/addapost">Add a Post </router-link>
     </div>
-    <div id="buttons" class="col-md-10">
+    <!-- <div class="col-md-2">
+      <router-link
+            :to="{ name: 'single', params: { id: post.postId} }"
+          > -->
+          <!-- <button id="view"> View more</button> -->
+        <!-- </router-link> -->
+    <!-- </div>  -->
+    <div id="buttons" class="col-md-8">
         <button id="logout" @click="Logout">Logout</button>
            <button id="Delete" @click="deleteuser">Delete Account</button>
     </div>
   </div>
  <hr>
  <div class="row">
- 
-  <div class="col-md-12 d-flex justify-content-center" >
-       <img :src="user.profilePic" alt="" class="rounded-circle"  >
-    </div>
+ <div class="col-md-12 d-flex justify-content-center" >
+       <img :src="userprofile.profilePic" alt="" class="rounded-circle"  >
+    </div> 
+  
     
  </div>
-  <div class="row">
-     <div  id="ouser" class="col-md-12">
-        <h2>{{userprofile.username}}</h2>
-    </div>
-  </div>
-  <div class="row">
+   <div class="row">
      <div  id="ouser" class="col-md-12">
         <h2>{{userprofile.username}}</h2>
     </div>
   </div>
   <div class="row"> 
     <div  id="fullname1" class="col-md-12">
-        {{user.fullname}}
+        {{userprofile.fullname}}
     </div>
-  </div>
-    <!-- <div class="row"> 
+  </div> 
+    <div class="row"> 
     <div  id="bio" class="col-md-12">
-        {{user.bio}}
+        {{userprofile.bio}}
     </div>
   </div>
   <div class="row"> 
     <div  id="bio" class="col-md-12">
-        {{user.userJob}}
+        {{userprofile.userJob}}
     </div>
   </div>
       <div class="row"> 
     <div  id="links" class="col-md-12">
-        {{user.link}}
+        {{userprofile.link}}
     </div>
-  </div>
-      <div class="row"> 
-    <div  id="links" class="col-md-12">
-        {{user.addlocation}}
-    </div>
-  </div> -->
+  </div> 
+ 
+    
    <div class="row" > 
-    <div  id="links" class="col-md-12">
-      <button id="edit"><router-link
-          :to="{ name: 'edit', params: { id: user.id }}"
-          class="nav-link"
-          >Edit Profile</router-link
-        ></button>
-        
-    </div>
     <br>
     <br>
     <hr>
@@ -130,18 +97,7 @@ mounted() {
     this.$store.dispatch("getUserprofile",this.id);
     this.$store.dispatch("getUserPosts", this.id);
 },
-methods:{
-  Logout(){
-    this.$store.dispatch("Logout");
-  },
-  edit(){
-    this.$store.dispatch("edit");
-  },
-  deleteuser(){
-    this.$store.dispatch("deleteuser", this.id);
-  }
-  
-},
+
 }
 
 </script>

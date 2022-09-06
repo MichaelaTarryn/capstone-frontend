@@ -114,7 +114,7 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          context.commit("setuserprofile", data.results)
+          context.commit("setuserprofile", data[0])
         });
     },
 
