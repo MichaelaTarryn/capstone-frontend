@@ -2,6 +2,7 @@ import {
   createStore
 } from 'vuex'
 import router from '@/router';
+import API, { API_LOCAL } from './api'
 export default createStore({
   state: {
     story: [{
@@ -56,6 +57,7 @@ export default createStore({
     user: null || JSON.parse(localStorage.getItem('user')),
     userPosts: null,
     userSinglePosts: null,
+    postedUser: null,
     userSinglePostswithoutcomments: null,
     users: null,
     post: null,
@@ -76,6 +78,9 @@ export default createStore({
     },
     setUserSinglePosts: (state, userSinglePosts) => {
       state.userSinglePosts = userSinglePosts;
+    },
+    setPostedUser: (state, postedUser) => {
+      state.postedUser = postedUser;
     },
     setUserSinglePostswithoutcomments: (state, userSinglePostswithoutcomments) => {
       state.userSinglePostswithoutcomments = userSinglePostswithoutcomments;
@@ -101,7 +106,7 @@ export default createStore({
   actions: {
 
     GetUser: async (context) => {
-      fetch("https://minigramproject.herokuapp.com/users")
+     await fetch(`${API.API_LOCAL}/users`)
         .then((res) => res.json())
         .then((data) => {
           context.commit("GetUser", data.results)
@@ -109,17 +114,17 @@ export default createStore({
     },
     
     getUserprofile: async (context,id) => {
-      console.log(id)
-      fetch(`https://minigramproject.herokuapp.com/users/${id}`)
+      // console.log(id)
+    await  fetch(`${API.API_LOCAL}/users/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           context.commit("setuserprofile", data[0])
         });
     },
 
     getPost: async (context) => {
-      fetch("https://minigramproject.herokuapp.com/post")
+    await  fetch(`${API.API_LOCAL}/post`)
         .then((res) => res.json())
         .then((data) => {
           context.commit("setPost", data)
@@ -127,7 +132,8 @@ export default createStore({
     },
     getUserPosts: async (context, id) => {
       // fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
-      fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
+      // https://minigramproject.herokuapp.com/users/${id}/post
+     await fetch(`${API.API_LOCAL}/users/${id}/post`)
         //  id = req.params.id
         .then((res) => res.json())
         .then((data) => {
@@ -137,22 +143,27 @@ export default createStore({
     },
     getUserSinglePost: async (context, postId) => {
       const id = context.state.user.id
+      console.log(postId)
       // fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
       //   .then((res) => res.json())
       //   .then((data) => {
       //     console.log(data)
       //     context.commit("setUserSinglePosts", data[0])
-      fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}/comments`)
+      await fetch(`${API.API_LOCAL}/users/${id}/post/${postId}/comments`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-          context.commit("setUserSinglePosts", data)
+          // Data
+          // contains two values
+          // comment & posted_user
+          context.commit("setUserSinglePosts", data.comment)
+          context.commit("setPostedUser", data.posted_user)
         });
     },
     getUserpostswithoutComments: async (context, postId) => {
 
       const id = context.state.user.id
-      fetch(`https://minigramproject.herokuapp.com/users/${id}/post/${postId}`)
+      await fetch(`${API.API_LOCAL}/users/${id}/post/${postId}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
@@ -160,7 +171,7 @@ export default createStore({
         });
     },
     Addlike: async (context, post) => {
-      fetch(`https://minigramproject.herokuapp.com/post/${post.postId}`, {
+      fetch(`${API.API_LOCAL}/post/${post.postId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -182,6 +193,8 @@ export default createStore({
       router.push("/login");
     },
     Goback: async (context) => {
+      context.state.userSinglePosts = null
+      context.state.userSinglePostswithoutcomments = null
       router.push("/landing");
     },
     Goback1: async (context, id) => {
@@ -206,7 +219,7 @@ export default createStore({
         userRole,
 
       } = payload
-      fetch("https://minigramproject.herokuapp.com/users", {
+      fetch(`${API.API_LOCAL}/users`, {
           method: "POST",
           body: JSON.stringify({
             fullname: fullname,
@@ -246,7 +259,7 @@ export default createStore({
         email,
         password
       } = payload;
-      fetch("https://minigramproject.herokuapp.com/users", {
+      fetch(`${API.API_LOCAL}/users`, {
           method: "PATCH",
           body: JSON.stringify({
             email: email,
@@ -282,7 +295,7 @@ export default createStore({
     },
     // update user information
     updateUser: async (context, user) => {
-      fetch("https://minigramproject.herokuapp.com/users/" + user.id, {
+      fetch(`${API.API_LOCAL}/users/` + user.id, {
           method: "PUT",
           body: JSON.stringify(user),
           headers: {
@@ -298,7 +311,7 @@ export default createStore({
     },
     // Deletes user from db
     deleteuser: async (context, id) => {
-      fetch("https://minigramproject.herokuapp.com/users/" + id, {
+      fetch(`${API.API_LOCAL}/users/` + id, {
           method: "DELETE",
           headers: {
             "x-auth-token": context.state.token,
@@ -322,7 +335,7 @@ export default createStore({
         addlocation,
         likes
       } = payload;
-      fetch("https://minigramproject.herokuapp.com/post", {
+      fetch(`${API.API_LOCAL}/post`, {
           method: "POST",
           body: JSON.stringify({
             img: img,
@@ -346,7 +359,7 @@ export default createStore({
 
     //edit a post
     EditPost: async (context, post) => {
-      fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
+      fetch(`${API.API_LOCAL}/post/` + post.postId, {
           method: "PUT",
           body: JSON.stringify(post),
           headers: {
@@ -362,7 +375,7 @@ export default createStore({
     },
     //delete a post
     deletePost: async (context, post) => {
-      fetch("https://minigramproject.herokuapp.com/post/" + post.postId, {
+      fetch(`${API.API_LOCAL}/post/` + post.postId, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -386,7 +399,7 @@ export default createStore({
       const {
         description,
       } = payload;
-      fetch("https://minigramproject.herokuapp.com/comments/" + payload.post, {
+      fetch(`${API.API_LOCAL}/comments/` + payload.post, {
           method: "POST",
           body: JSON.stringify({
             description: description
@@ -407,8 +420,11 @@ export default createStore({
 
     //edit comment
     EditComment: async (context, comments) => {
+      console.log(comments)
+      console.log('comments')
+
       // fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
-      fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentId, {
+      fetch(`${API.API_LOCAL}/comments/` + comments.commentId, {
           method: "PATCH",
           body: JSON.stringify(comments),
           headers: {
@@ -428,7 +444,7 @@ export default createStore({
     //delete a comment
     deleteComment: async (context, comments) => {
       console.log(comments.postId);
-      fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentId, {
+      fetch(`${API.API_LOCAL}/comments/` + comments.commentId, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -443,15 +459,22 @@ export default createStore({
         });
     },
     checkme: async (context) => {
-      let user = await context.state.user;
-      let userSinglePosts = await context.state.userSinglePostswithoutcomments
+      // console.log("object");
+      // let user = await context.state.user;
+      let postedUser = await context.state.userSinglePostswithoutcomments
+      console.log(postedUser)
       // console.log(userSinglePosts);
-      // console.log(user);
-      if (user && userSinglePosts != null) {
-        if (user.id === userSinglePosts.userId) {
-          context.state.me = true
-        }
-      }
+      // // console.log(user);
+      // if (user && userSinglePosts != null) {
+      //   console.log('test')
+      //   // console.log(user.id);
+      //   // console.log(userSinglePosts[0].userId);
+      //   if (user.id === userSinglePosts[0].userId) {
+      //     context.state.me = true
+      //   } else {
+      //     context.state.me = false
+      //   }
+      // }
     },
 
   },

@@ -9,12 +9,11 @@
   </div>
  <hr>
  <div class="row">
- <div class="col-md-12 d-flex justify-content-center" >
-       <img :src="userprofile.profilePic" alt="" class="rounded-circle"  >
+   <div v-if="userprofile">
+   <div class="col-md-12 d-flex justify-content-center" >
+     <img :src="userprofile.profilePic" alt="" class="rounded-circle" >
     </div>  
-  
-    
- </div>
+         
    <div class="row">
      <div  id="ouser" class="col-md-12">
         <h2>{{userprofile.username}}</h2>
@@ -39,9 +38,11 @@
     <div  id="links" class="col-md-12">
         {{userprofile.link}}
     </div>
-  </div> 
  
-    
+</div>
+ 
+      </div>
+      </div>
    <div class="row" > 
     <br>
     <br>

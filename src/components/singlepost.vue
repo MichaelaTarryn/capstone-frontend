@@ -1,36 +1,15 @@
 <template>
   <div class="container">
-    <!-- <div class="row">
-    <div  id=logo class="col-md-2">
-      <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
-    </div>
-    <div  id="searches" class="col-md-2">
-   <router-link class="nav-link" to="/landing">Home</router-link>
-    </div>
-    <div  id="searches" class="col-md-2">
-   <router-link class="nav-link" to="/search">search followers </router-link>
-    </div>
-    <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/about">About Mimigram</router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
-      </div>
-    
-    <div  id="searches" class="col-md-2">
-     <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-    </div>
-  </div>
-  
-  <hr> -->
 
     <div class="row">
       <div class="col-md-3">
-        <router-link
+        <!-- <router-link
           :to="{ name: 'profile', params: { id: user.id } }"
           class="nav-link"
           >go back</router-link
-        >
+
+        > -->
+        <router-link class="nav-link" to="/search"> Go back </router-link>
       </div>
     </div>
     <hr />
@@ -126,7 +105,7 @@
       <div class="row" v-if="getUserpostswithoutComments">
         <div class="col-md-6"></div>
         <div class="col-md-12">
-          {{ getUserpostswithoutComments }}
+          <!-- {{ getUserpostswithoutComments }} -->
         </div>
         <div class="col-md-12">
           <h3> This post was created by <router-link  :to="{ name: 'userprofile', params: { id: getUserpostswithoutComments.userId } }"
@@ -152,7 +131,7 @@
             <i class="bi bi-star"></i>
           </button>
           {{ getUserpostswithoutComments.likes }}
-          <button v-if="me"
+          <button 
             type="button"
             class="btn"
             data-bs-toggle="modal"
@@ -160,7 +139,7 @@
           >
             Edit Post
           </button>
-          <button v-if="me"
+          <button 
             btn="btn"
             type="button"
             id="btnD"
@@ -256,6 +235,7 @@
       </div>
       <div class="row" v-if="userSinglePosts">
         <div v-for="comment in userSinglePosts" :key="comment">
+          {{comment.post_user}}
           <div id="usercomment" class="col-md-10">
             <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
             <input
@@ -274,7 +254,7 @@
               disabled
             />
 
-            <button v-if="me"
+            <button 
               id="remove"
               @click="this.$store.dispatch('deleteComment', comment)"
             >
