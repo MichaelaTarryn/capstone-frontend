@@ -58,6 +58,12 @@ const routes = [
       props: true,
     },
     {
+      path: '/userprofile/:id',
+      name: 'userprofile',
+      component: () => import( '../views/userprofile.vue'),
+      props: true,
+    },
+    {
       path: '/edit',
       name: 'edit',
       component: () => import( '../views/editprofile.vue')

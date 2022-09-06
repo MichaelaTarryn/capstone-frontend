@@ -176,18 +176,7 @@ export default {
   padding: auto;
   height: 30px;
 }
-/* #searches1 {
-  margin-left: 40px;
-  margin-top: 8px;
-  padding: auto;
-  height: 30px;
-}
-#searches {
-  margin-left: 30px;
-  margin-top: 8px;
-  padding: auto;
-  height: 30px;
-} */
+
 .navbar-brand {
   color: rgb(198, 134, 134);
   margin-left: 20px;
@@ -204,12 +193,6 @@ nav a:hover {
   color: rgb(198, 134, 134) !important;
 }
 
-/* #searches2 {
-  margin-left: 20px;
-  margin-top: 8px;
-  padding: auto;
-  height: 30px;
-} */
 
 .nav-link:hover {
   color: rgb(198, 134, 134);

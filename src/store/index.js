@@ -62,6 +62,7 @@ export default createStore({
     posts: null,
     token: null || localStorage.getItem('usertoken'),
     me: false,
+    userprofile:null,
   },
   getters: {},
   mutations: {
@@ -90,6 +91,9 @@ export default createStore({
     GetUser(state, users) {
       state.users = users;
     },
+    setuserprofile(state,userprofile){
+ state.userprofile=userprofile;
+    }
     // checkme(state, me) {
     //   state.me = me;
     // },
@@ -103,6 +107,17 @@ export default createStore({
           context.commit("GetUser", data.results)
         });
     },
+    
+    getUserprofile: async (context,id) => {
+      console.log(id)
+      fetch(`https://minigramproject.herokuapp.com/users/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          context.commit("setuserprofile", data.results)
+        });
+    },
+
     getPost: async (context) => {
       fetch("https://minigramproject.herokuapp.com/post")
         .then((res) => res.json())

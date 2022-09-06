@@ -1,7 +1,29 @@
 <template>
-
-<div class="container" v-if="user">
-<hr>
+  <div class="container" v-if="user">
+    <div  id=logo class="col-md-2">
+      <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
+    </div>
+    <div  id="searches" class="col-md-1">
+   <router-link class="nav-link" to="/landing">Home</router-link>
+    </div>
+    <div  id="searches" class="col-md-2">
+   <router-link class="nav-link" to="/search">search followers </router-link>
+    </div>
+    <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/about">About Mimigram</router-link>
+      </div>
+      <div id="searches" class="col-md-2">
+        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
+      </div>
+    <div  id="searches" class="col-md-2">
+     <router-link class="nav-link" to="/addapost">Add a Post </router-link>
+    </div>
+    <!-- <div id="buttons" class="col-md-11">
+        <button id="logout" @click="Logout">Logout</button>
+           <button id="Delete" @click="deleteuser">Delete Account</button>
+    </div> -->
+  </div>
+   --><hr>
   <div class="row">
     <div class="col-md-2">
       <router-link class="nav-link" to="/addapost">Add a Post </router-link>
@@ -21,12 +43,12 @@
  </div>
   <div class="row">
      <div  id="ouser" class="col-md-12">
-        <h2>{{user.username}}</h2>
+        <h2>{{userprofile.username}}</h2>
     </div>
   </div>
   <div class="row">
      <div  id="ouser" class="col-md-12">
-        <h2>{{user.username}}</h2>
+        <h2>{{userprofile.username}}</h2>
     </div>
   </div>
   <div class="row"> 
@@ -34,7 +56,7 @@
         {{user.fullname}}
     </div>
   </div>
-    <div class="row"> 
+    <!-- <div class="row"> 
     <div  id="bio" class="col-md-12">
         {{user.bio}}
     </div>
@@ -53,7 +75,7 @@
     <div  id="links" class="col-md-12">
         {{user.addlocation}}
     </div>
-  </div>
+  </div> -->
    <div class="row" > 
     <div  id="links" class="col-md-12">
       <button id="edit"><router-link
@@ -86,12 +108,11 @@
 
   <div class="row">
   </div>
-</div>
 
 </template>
 
 <script>
-export default {
+ export default{
 props: ["id"],
 computed: {
     user() {
@@ -99,7 +120,15 @@ computed: {
     },
     userPosts() {
         return this.$store.state.userPosts
-    } 
+    },
+    userprofile(){
+        return this.$store.state.userprofile
+    }
+},
+
+mounted() {
+    this.$store.dispatch("getUserprofile",this.id);
+    this.$store.dispatch("getUserPosts", this.id);
 },
 methods:{
   Logout(){
@@ -113,10 +142,8 @@ methods:{
   }
   
 },
-mounted() {
-    this.$store.dispatch("getUserPosts", this.id)
-},
 }
+
 </script>
 
 <style scoped>

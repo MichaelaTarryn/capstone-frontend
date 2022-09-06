@@ -129,6 +129,12 @@
           {{ getUserpostswithoutComments }}
         </div>
         <div class="col-md-12">
+          <h3> This post was created by <router-link  :to="{ name: 'userprofile', params: { id: getUserpostswithoutComments.userId } }"
+                >{{ getUserpostswithoutComments.username }} </router-link
+              ></h3>
+          
+        </div>
+        <div class="col-md-12">
           <img
             id="userpic"
             class="img-fluid"
@@ -137,7 +143,6 @@
           />
         </div>
         <div id="details" class="col-md-8">
-          {{ getUserpostswithoutComments.username }}
           <button
             id="likes"
             @click="
