@@ -49,11 +49,6 @@
         {{user.link}}
     </div>
   </div>
-      <div class="row"> 
-    <div  id="links" class="col-md-12">
-        {{user.addlocation}}
-    </div>
-  </div>
    <div class="row" > 
     <div  id="links" class="col-md-12">
       <button id="edit"><router-link

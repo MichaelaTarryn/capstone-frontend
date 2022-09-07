@@ -234,19 +234,20 @@
         </div>
       </div>
       <div class="row" v-if="userSinglePosts">
-        <div v-for="comment in userSinglePosts" :key="comment">
+        <div class="row" v-for="comment in userSinglePosts" :key="comment">
           {{comment.post_user}}
-          <div id="usercomment" class="col-md-10">
+          <div id="usercomment" class="col">
             <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
             <input
+            class="col-md-2"
               type="text"
               name=""
               id="usercomment1"
               v-model="comment.username"
               disabled
             />
-            <!-- <label id="comments" for="">{{comment.description}}</label>  -->
             <input
+            class="col-md-3"
               type="text"
               name=""
               v-model="comment.description"
@@ -255,17 +256,21 @@
             />
 
             <button 
+            class="col-md-2 ms-5"
               id="remove"
               @click="this.$store.dispatch('deleteComment', comment)"
             >
               Remove comment
             </button>
 
-            <button id="btnedit1" @click="edit(comment.commentId)">
+            <button 
+            class="col-md-2"
+            id="btnedit1" @click="edit(comment.commentId)">
              Edit comment
             </button>
 
             <button 
+            class="col-md-2"
               id="edit1"
               @click="this.$store.dispatch('EditComment', comment)"
             >
@@ -274,11 +279,7 @@
           </div>
         </div>
       </div>
-      <!-- select username from users 
-  inner join comments
-on frkets
-where commentid = ?
--->
+    
       <div class="row">
         <div>
           <div id="commentM" class="col-md-10">
@@ -422,30 +423,28 @@ h5 {
 #add-People {
   margin-top: 20px;
 }
-#usercomment {
+ #usercomment {
+  padding: 20px;
   margin: auto;
   margin-top: 20px;
   background-color: rgb(236, 226, 226);
   border: 2px solid rgb(97, 92, 92);
   align-content: center;
-}
-#usercomment1 {
+} 
+/* #usercomment1 {
   margin-top: 20px;
   background-color: rgb(236, 226, 226);
   margin-bottom: 20px;
 
-}
+} */
 
-#comments {
+/* #comments {
   margin-bottom: 20px;
 
   align-content: center;
-}
-/* #addcomment{
-width:60px;
 } */
 
-#remove {
+/* #remove {
   margin-top: 20px;
   display: flex;
   float: right;
@@ -459,10 +458,16 @@ width:60px;
   margin-top: 20px;
   display: flex;
   float: right;
-}
+} */
 
 #btnD {
   width: 160px;
   margin-left: 120px;
+}
+
+@media screen and (max-width:1200px){
+  #usercomment{
+    height:90px;
+  }
 }
 </style>

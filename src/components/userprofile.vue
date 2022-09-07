@@ -51,7 +51,7 @@
       <div class="row" >
     <div class="col-md-4"  v-for="post in userPosts" :key="post" :post="post">
      
-       <img :src="post.img" alt="" id="upost" class="img-thumbnail" >
+       <img :src="post.img" alt="" id="upost" class="img-fluid" >
        <div>
          <router-link
             :to="{ name: 'single', params: { id: post.postId} }"
@@ -140,12 +140,12 @@ mounted() {
     width:400px;
     margin-bottom: 10px;
 }
-.img-thumbnail{
-  height: 500px;
-  width:350px;
+.img-fluid{
+  height: 400px;
+  width:auto;
   margin-bottom:20px;
 }
-.img-thumbnail :hover{
+.img-fluid :hover{
   opacity: 0.5;
 }
 #FOOTER {

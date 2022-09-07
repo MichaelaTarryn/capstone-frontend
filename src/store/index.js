@@ -2,7 +2,7 @@ import {
   createStore
 } from 'vuex'
 import router from '@/router';
-import API, { API_LOCAL } from './api'
+import API, { API_LOCAL,  API_LIVE} from './api'
 export default createStore({
   state: {
     story: [{
@@ -106,7 +106,8 @@ export default createStore({
   actions: {
 
     GetUser: async (context) => {
-     await fetch(`${API.API_LOCAL}/users`)
+     await fetch(`${API.API_LIVE}/users`)
+    //  await fetch(`${API.API_LOCAL}/users`)
         .then((res) => res.json())
         .then((data) => {
           context.commit("GetUser", data.results)
@@ -388,7 +389,7 @@ export default createStore({
           context.dispatch("getPost")
         });
       router.push({
-        name: "landing"
+        name: "search"
       })
     },
 
