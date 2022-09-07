@@ -2,11 +2,11 @@
    
    <div class="container">
     <hr>
-  <div class="row">
+  <!-- <div class="row">
      <div class="col-md-2">
       <button> Go back</button>
      </div> 
-  </div>
+  </div> -->
  <hr>
  <div class="row">
    <div v-if="userprofile">

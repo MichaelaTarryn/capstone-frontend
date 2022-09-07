@@ -2,7 +2,10 @@ import {
   createStore
 } from 'vuex'
 import router from '@/router';
-import API, { API_LOCAL,  API_LIVE} from './api'
+import API, {
+  API_LOCAL,
+  API_LIVE
+} from './api'
 export default createStore({
   state: {
     story: [{
@@ -64,7 +67,7 @@ export default createStore({
     posts: null,
     token: null || localStorage.getItem('usertoken'),
     me: false,
-    userprofile:null,
+    userprofile: null,
   },
   getters: {},
   mutations: {
@@ -96,8 +99,8 @@ export default createStore({
     GetUser(state, users) {
       state.users = users;
     },
-    setuserprofile(state,userprofile){
- state.userprofile=userprofile;
+    setuserprofile(state, userprofile) {
+      state.userprofile = userprofile;
     }
     // checkme(state, me) {
     //   state.me = me;
@@ -106,17 +109,17 @@ export default createStore({
   actions: {
 
     GetUser: async (context) => {
-     await fetch(`${API.API_LIVE}/users`)
-    //  await fetch(`${API.API_LOCAL}/users`)
+      await fetch(`${API.API_LIVE}/users`)
+        //  await fetch(`${API.API_LOCAL}/users`)
         .then((res) => res.json())
         .then((data) => {
           context.commit("GetUser", data.results)
         });
     },
-    
-    getUserprofile: async (context,id) => {
+
+    getUserprofile: async (context, id) => {
       // console.log(id)
-    await  fetch(`${API.API_LOCAL}/users/${id}`)
+      await fetch(`${API.API_LIVE}/users/${id}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);
@@ -125,7 +128,7 @@ export default createStore({
     },
 
     getPost: async (context) => {
-    await  fetch(`${API.API_LOCAL}/post`)
+      await fetch(`${API.API_LIVE}/post`)
         .then((res) => res.json())
         .then((data) => {
           context.commit("setPost", data)
@@ -134,7 +137,7 @@ export default createStore({
     getUserPosts: async (context, id) => {
       // fetch(`https://minigramproject.herokuapp.com/users/${id}/post`)
       // https://minigramproject.herokuapp.com/users/${id}/post
-     await fetch(`${API.API_LOCAL}/users/${id}/post`)
+      await fetch(`${API.API_LIVE}/users/${id}/post`)
         //  id = req.params.id
         .then((res) => res.json())
         .then((data) => {
@@ -150,7 +153,7 @@ export default createStore({
       //   .then((data) => {
       //     console.log(data)
       //     context.commit("setUserSinglePosts", data[0])
-      await fetch(`${API.API_LOCAL}/users/${id}/post/${postId}/comments`)
+      await fetch(`${API.API_LIVE}/users/${id}/post/${postId}/comments`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
@@ -164,7 +167,7 @@ export default createStore({
     getUserpostswithoutComments: async (context, postId) => {
 
       const id = context.state.user.id
-      await fetch(`${API.API_LOCAL}/users/${id}/post/${postId}`)
+      await fetch(`${API.API_LIVE}/users/${id}/post/${postId}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
@@ -172,7 +175,7 @@ export default createStore({
         });
     },
     Addlike: async (context, post) => {
-      fetch(`${API.API_LOCAL}/post/${post.postId}`, {
+      fetch(`${API.API_LIVE}/post/${post.postId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -202,8 +205,15 @@ export default createStore({
       router.push("/profile/" + id);
     },
     Logout: async (context) => {
+      localStorage.removeItem('usertoken');
+      localStorage.removeItem('user');
+      localStorage.clear()
       context.state.user = null;
-      localStorage.removeItem('user')
+      context.state.token  = null;
+      context.state.userPosts = null;
+      context.state.userSinglePosts = null;
+      context.state.postedUser = null;
+      context.state.userSinglePostswithoutcomments = null;
       router.push("/login");
     },
     edit: async (context) => {
@@ -220,7 +230,7 @@ export default createStore({
         userRole,
 
       } = payload
-      fetch(`${API.API_LOCAL}/users`, {
+      fetch(`${API.API_LIVE}/users`, {
           method: "POST",
           body: JSON.stringify({
             fullname: fullname,
@@ -260,7 +270,7 @@ export default createStore({
         email,
         password
       } = payload;
-      fetch(`${API.API_LOCAL}/users`, {
+      fetch(`${API.API_LIVE}/users`, {
           method: "PATCH",
           body: JSON.stringify({
             email: email,
@@ -296,7 +306,7 @@ export default createStore({
     },
     // update user information
     updateUser: async (context, user) => {
-      fetch(`${API.API_LOCAL}/users/` + user.id, {
+      fetch(`${API.API_LIVE}/users/` + user.id, {
           method: "PUT",
           body: JSON.stringify(user),
           headers: {
@@ -312,7 +322,7 @@ export default createStore({
     },
     // Deletes user from db
     deleteuser: async (context, id) => {
-      fetch(`${API.API_LOCAL}/users/` + id, {
+      fetch(`${API.API_LIVE}/users/` + id, {
           method: "DELETE",
           headers: {
             "x-auth-token": context.state.token,
@@ -336,7 +346,7 @@ export default createStore({
         addlocation,
         likes
       } = payload;
-      fetch(`${API.API_LOCAL}/post`, {
+      fetch(`${API.API_LIVE}/post`, {
           method: "POST",
           body: JSON.stringify({
             img: img,
@@ -360,7 +370,7 @@ export default createStore({
 
     //edit a post
     EditPost: async (context, post) => {
-      fetch(`${API.API_LOCAL}/post/` + post.postId, {
+      fetch(`${API.API_LIVE}/post/` + post.postId, {
           method: "PUT",
           body: JSON.stringify(post),
           headers: {
@@ -376,7 +386,7 @@ export default createStore({
     },
     //delete a post
     deletePost: async (context, post) => {
-      fetch(`${API.API_LOCAL}/post/` + post.postId, {
+      fetch(`${API.API_LIVE}/post/` + post.postId, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -400,7 +410,7 @@ export default createStore({
       const {
         description,
       } = payload;
-      fetch(`${API.API_LOCAL}/comments/` + payload.post, {
+      fetch(`${API.API_LIVE}/comments/` + payload.post, {
           method: "POST",
           body: JSON.stringify({
             description: description
@@ -425,7 +435,7 @@ export default createStore({
       console.log('comments')
 
       // fetch("https://minigramproject.herokuapp.com/comments/" + comments.commentsId, {
-      fetch(`${API.API_LOCAL}/comments/` + comments.commentId, {
+      fetch(`${API.API_LIVE}/comments/` + comments.commentId, {
           method: "PATCH",
           body: JSON.stringify(comments),
           headers: {
@@ -445,7 +455,7 @@ export default createStore({
     //delete a comment
     deleteComment: async (context, comments) => {
       console.log(comments.postId);
-      fetch(`${API.API_LOCAL}/comments/` + comments.commentId, {
+      fetch(`${API.API_LIVE}/comments/` + comments.commentId, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
