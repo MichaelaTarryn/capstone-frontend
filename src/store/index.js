@@ -464,18 +464,18 @@ export default createStore({
       // let user = await context.state.user;
       let postedUser = await context.state.userSinglePostswithoutcomments
       console.log(postedUser)
-      // console.log(userSinglePosts);
-      // // console.log(user);
-      // if (user && userSinglePosts != null) {
-      //   console.log('test')
-      //   // console.log(user.id);
-      //   // console.log(userSinglePosts[0].userId);
-      //   if (user.id === userSinglePosts[0].userId) {
-      //     context.state.me = true
-      //   } else {
-      //     context.state.me = false
-      //   }
-      // }
+      console.log(userSinglePosts);
+      // console.log(user);
+      if (user && userSinglePosts != null) {
+        console.log('test')
+        // console.log(user.id);
+        // console.log(userSinglePosts[0].userId);
+        if (user.id === userSinglePosts[0].userId) {
+          context.state.me = true
+        } else {
+          context.state.me = false
+        }
+      }
     },
 
   },

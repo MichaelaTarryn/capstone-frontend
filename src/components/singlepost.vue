@@ -139,7 +139,7 @@
           >
             Edit Post
           </button>
-          <button 
+          <button  
             btn="btn"
             type="button"
             id="btnD"
@@ -233,16 +233,15 @@
           </div>
         </div>
       </div>
-      <div class="row" v-if="userSinglePosts">
-        <div class="row" v-for="comment in userSinglePosts" :key="comment">
-          {{comment.post_user}}
-          <div id="usercomment" class="col">
+      <div class="row" id="usercommentpage" v-if="userSinglePosts">
+        <div class="row" id="usercomment" v-for="comment in userSinglePosts" :key="comment">
+          <div  class="col-md-12">
             <!-- <label id="usercomment1" for="">{{comment.username}}</label> : -->
             <input
             class="col-md-2"
               type="text"
               name=""
-              id="usercomment1"
+               id="usercomment1" 
               v-model="comment.username"
               disabled
             />
@@ -254,9 +253,14 @@
               :id="'comments' + comment.commentId"
               disabled
             />
+            <!-- <div id="button "> -->
 
+             </div>
+             <div id="buttons" class="col-md-12 mt-4">
+
+             
             <button 
-            class="col-md-2 ms-5"
+            class="col-md-2 "
               id="remove"
               @click="this.$store.dispatch('deleteComment', comment)"
             >
@@ -264,25 +268,27 @@
             </button>
 
             <button 
-            class="col-md-2"
+            class="col-md-2 ms-3"
             id="btnedit1" @click="edit(comment.commentId)">
              Edit comment
             </button>
 
             <button 
-            class="col-md-2"
+            class="col-md-2 ms-3"
               id="edit1"
               @click="this.$store.dispatch('EditComment', comment)"
             >
               Submit changes
             </button>
           </div>
+          <!-- </div> -->
+         
         </div>
       </div>
     
-      <div class="row">
-        <div>
-          <div id="commentM" class="col-md-10">
+      <div class="row" >
+        <div >
+          <div id="commentM" class="col">
             <input
               type="text"
               id="username"
@@ -393,6 +399,10 @@ h5 {
   width: 350px;
   margin-bottom: 20px;
 }
+
+#buttons{
+  height:fit-content;
+}
 #likes {
   margin-left: 20px;
   height: 30px;
@@ -402,11 +412,12 @@ h5 {
 
   background-color: rgb(255, 253, 253);
   border: 2px solid rgb(179, 126, 126);
-  margin: auto; 
+   margin: auto;  
+  /* width:auto; */
    margin-top:20px;
-   padding-bottom: 10px;
    align-content: center;
-   padding:30px;
+   padding:20px;
+  
 }
 #edit {
   float: right;
@@ -465,9 +476,106 @@ h5 {
   margin-left: 120px;
 }
 
+#usercommentpage{
+  height:fit-content;
+}
+
 @media screen and (max-width:1200px){
   #usercomment{
-    height:90px;
+    height:fit-content;
   }
+  #remove{
+    width:170px;
+  }
+  #edit1{
+    margin-right:110px;
+  }
+}
+@media screen and (max-width:992px){
+  #usercomment{
+    height:120px;
+  }
+  #remove{
+    width:170px;
+  }
+  #btnedit1{
+    width:170px;
+    float:none;
+    margin-right:1px;
+    padding-left:20px
+  }
+  #edit1{
+    /* margin-top: 29px; */
+    float:none;
+    width:170px;
+    margin-right:4px;
+  }
+  #commentM {
+    height:fit-content;
+  }
+  #username{
+    margin-left:60px;
+  }
+}
+@media screen and (max-width:991px){
+ #addcomment{
+  margin-top:20px;
+ }
+ #username{
+  width:300px;
+  margin-left: 0px;
+ }
+ #edit1{
+  margin-top:2px;
+ }
+ 
+}
+@media screen and (max-width:768px){
+#usercomment1{
+  margin-top: 20px;
+}
+#edit1{
+  margin-top:none;
+}
+#buttons{
+  margin-top:0px;
+}
+#usercomment{
+  height:fit-content;
+}
+#btnD{
+  margin:auto;
+}
+ 
+}
+@media screen and (max-width:469px){
+#remove{
+  margin-left:15px;
+  padding-left:none;
+}
+#btnD{
+  margin:auto;
+}
+ 
+}
+@media screen and (max-width:377px){
+#username{
+  width:250px;
+}
+#description1{
+  margin-top:10px;
+  width:250px;
+}
+ 
+}
+@media screen and (max-width:330px){
+#username{
+  width:200px;
+}
+#description1{
+  margin-top:10px;
+  width:200px;
+}
+ 
 }
 </style>
