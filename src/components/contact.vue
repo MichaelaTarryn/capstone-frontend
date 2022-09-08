@@ -21,8 +21,8 @@
           </div>
           </div>
           <div id="icons" class="col-md-2">
-              <button id="li"><i class="bi bi-linkedin"></i></button>
-              <button id="li1"><i class="bi bi-github"></i></button>
+              <a id="li" href="https://www.linkedin.com/in/michaela-ward-6604561bb/"><i class="bi bi-linkedin"></i></a>
+              <a id="li1" href="https://github.com/MichaelaTarryn"><i class="bi bi-github"></i></a>
              </div>
         </div>
         <div class="row">

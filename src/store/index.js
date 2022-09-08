@@ -209,7 +209,7 @@ export default createStore({
       localStorage.removeItem('user');
       localStorage.clear()
       context.state.user = null;
-      context.state.token  = null;
+      context.state.token = null;
       context.state.userPosts = null;
       context.state.userSinglePosts = null;
       context.state.postedUser = null;
@@ -246,31 +246,52 @@ export default createStore({
         })
         .then((response) => response.json())
         .then((data) => {
-          if (data.msg === "you have registered successfully: 1") {
-            alert(data.msg);
+          if (data.msg === "successfully register !") {
+            // alert(data.msg);
+            swal({
+              icon: "success",
+              title: "Welcome to 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜",
+              text: "successfully register ! , Welcome new user",
+            });
             let user = data.user;
             let token = data.token;
             context.commit("setUser", user);
             context.commit("setToken", token);
             context.dispatch("getPost");
+            router.push("/login")
+
             // router.push({
             //   name: "login",
             // })
-          } else {
-            alert(data.msg);
-            // document.getElementById("register").reset();
-          }
+          } else if (data.msg === "username already exists please enter new one , thank you ") {
+            swal({
+              icon: "error",
+              title: "Welcome to 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜",
+              text: "username already exists please enter new one , thank you ",
+            });
+            // alert(data.msg);
+          } else
+          if (data.msg === "Email Exists") {
+            swal({
+              icon: "error",
+              title: "Welcome to 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜",
+              text: "Email Exists",
+            })
+          };
+          // document.getElementById("register").reset();
         });
-      router.push("/login")
+
     },
 
     //login 
     login: async (context, payload) => {
+      console.log(payload);
       const {
         email,
         password
       } = payload;
       fetch(`${API.API_LIVE}/users`, {
+      // fetch(`${API.API_LIVE}/users`, {
           method: "PATCH",
           body: JSON.stringify({
             email: email,
@@ -278,19 +299,12 @@ export default createStore({
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
-            "x-auth-token": await context.state.token,
+            "x-auth-token": context.state.token,
           },
         })
         .then((response) => response.json())
         .then((data) => {
-          // if (data.msg === "Email not found, Please Register") {
-          //   swal({
-          //     icon: "error",
-          //     title: "The email does not match",
-          //     text: "Type in the proper email",
-          //     buttons: "Try Again",
-          //   });
-          // }
+          console.log(data);
           if (data.msg === "Login Successful") {
             swal({
               icon: "success",
@@ -310,30 +324,30 @@ export default createStore({
               name: "landing"
             })
 
-          } else {
-            // (data.msg === "The password does not match") {
-              swal({
-                icon: "error",
-                title: "The password does not match",
-                text: "Type in the password carefully",
-                buttons: "Try Again",
-              });
-              if (data.msg === "Email not found, Please Register") {
-                swal({
-                  icon: "error",
-                  title: "The email does not match",
-                  text: "Type in the proper email",
-                  buttons: "Try Again",
-                });
-              }
-            // }
-            // alert(data.msg)
-            // router.push({
-            //   name:"landing"
-            // })
+          } else if ((data.msg === "You entered the wrong password sorry")) {
+            swal({
+              icon: "error",
+              title: "You entered the wrong password sorry",
+              text: "Type in the password carefully",
+              buttons: "Try Again",
+            })
           }
-        });
+           else if (data.msg === "Email not found, Please Register") {
+            swal({
+              icon: "error",
+              title: "The email does not match",
+              text: "Type in the proper email",
+              buttons: "Try Again",
+            });
+          }
+          // }
+          // alert(data.msg)
+          // router.push({
+          //   name:"landing"
+        })
+
     },
+
     // update user information
     updateUser: async (context, user) => {
       fetch(`${API.API_LIVE}/users/` + user.id, {

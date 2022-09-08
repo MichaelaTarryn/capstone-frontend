@@ -6,14 +6,14 @@
     <form @submit.prevent="register"> 
     <input type="text" id="name" placeholder="Please enter your Full Name...." v-model="fullname" required>
     <br>
-    <input type="gmail" id="gmail" placeholder="Please enter your gmail.." v-model="email" required>
+    <input type="email" id="gmail" placeholder="Please enter your gmail.." v-model="email" required>
     <br>
     <input type="text" id="username" placeholder="Please create yourself a username.." v-model="username" required>
     <br>
      <input type="password" id="password" placeholder="Enter password.." v-model="password" required>
     <br>
     <div >
-        <button id="signin" type="btn" @click="register"> Submit</button> 
+        <button id="signin" type="btn"> Submit</button> 
         </div>
     </form>
    
@@ -97,5 +97,50 @@ export default {
 }
 h1{
     color: rgb(198, 134, 134);
+}
+
+@media screen  and (max-width:576px){
+    .container{
+        width:450px;
+    }
+}
+@media screen  and (max-width:465px){
+    .container{
+        width:350px;
+    }
+}
+@media screen  and (max-width:355px){
+    .container{
+        width:290px;
+    }
+    #name{
+        width:200px;
+    }
+    #gmail{
+        width:200px;
+    }
+    #password{
+        width:200px;
+    }
+    #username{
+        width:200px;
+    }
+}
+@media screen  and (max-width:300px){
+    .container{
+        width:250px;
+    }
+    #name{
+        width:100px;
+    }
+    #gmail{
+        width:100px;
+    }
+    #password{
+        width:100px;
+    }
+    #username{
+        width:100px;
+    }
 }
 </style>
