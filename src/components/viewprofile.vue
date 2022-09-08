@@ -82,11 +82,16 @@
   <div class="row">
   </div>
 </div>
+<div v-else>
+        <loader/>
+      </div>
 
 </template>
 
 <script>
+  import loader from '@/components/loader.vue'
 export default {
+  components:{loader},
 props: ["id"],
 computed: {
     user() {

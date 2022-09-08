@@ -64,14 +64,19 @@
     </div>
 
     <div v-else>
-      <h2>Loading ... Your patients is deeply appreciated</h2>
+      <loader/>
+      <!-- <h2>Loading ... Your patients is deeply appreciated</h2> -->
     </div>
   </div>
   <div v-else><h5>Please login in , thank you</h5></div>
 </template>
 
 <script>
+  import loader from '@/components/loader.vue'
 export default {
+  components:{
+    loader,
+  },
   data() {
     return {
       search: "",

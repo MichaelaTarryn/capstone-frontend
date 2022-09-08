@@ -42,6 +42,9 @@
 </div>
  
       </div>
+      <div v-else>
+        <loader/>
+      </div>
       </div>
    <div class="row" > 
     <br>
@@ -72,7 +75,9 @@
 </template>
 
 <script>
+  import loader from '@/components/loader.vue'
  export default{
+  components:{loader},
 props: ["id"],
 computed: {
     user() {

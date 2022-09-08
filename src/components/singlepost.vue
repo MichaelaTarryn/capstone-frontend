@@ -242,6 +242,9 @@
           </div>
         </div>
       </div>
+      <div v-else>
+        <loader/>
+      </div>
       <div class="row" id="usercommentpage" v-if="userSinglePosts">
         <div class="row" id="usercomment" v-for="comment in userSinglePosts" :key="comment">
           <div  class="col-md-12">
@@ -316,11 +319,16 @@
         </div>
       </div>
     </div>
+   
+ 
   </div>
+  
 </template>
 
 <script>
+  import loader from '@/components/loader.vue'
 export default {
+  components:{loader},
   props: ["id"],
   data() {
     return {

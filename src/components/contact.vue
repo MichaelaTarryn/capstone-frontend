@@ -82,11 +82,13 @@ color: rgb(198, 134, 134);
   width:70px;
   height:60px;
   border: 3px solid rgb(198, 134, 134);
+  color:rgb(198, 134, 134)
 }
 #li1{
   width:70px;
   height:60px;
   border: 3px solid rgb(198, 134, 134);
+  color:rgb(198, 134, 134)
 
 }
 p{
