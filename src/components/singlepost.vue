@@ -121,6 +121,15 @@
             alt=""
           />
         </div>
+        <div class="row ">
+          <div class="col-md-12 justify-content-end">
+          {{getUserpostswithoutComments.caption}}
+        </div>
+        <div class="col-md-12">
+          {{getUserpostswithoutComments.addlocation}}
+        </div>
+        </div>
+        
         <div id="details" class="col-md-8">
           <button
             id="likes"
@@ -225,7 +234,7 @@
                     "
                   >
                     <i class="bi bi-plus-circle"></i>
-                    Edit Product
+                    Edit Post
                   </button>
                 </div>
               </div>

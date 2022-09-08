@@ -283,8 +283,22 @@ export default createStore({
         })
         .then((response) => response.json())
         .then((data) => {
+          // if (data.msg === "Email not found, Please Register") {
+          //   swal({
+          //     icon: "error",
+          //     title: "The email does not match",
+          //     text: "Type in the proper email",
+          //     buttons: "Try Again",
+          //   });
+          // }
           if (data.msg === "Login Successful") {
-            alert(data.msg);
+            swal({
+              icon: "success",
+              title: "Welcome to 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜",
+              text: "Go explore",
+              buttons: "Enjoy",
+            });
+            // alert(data.msg);
             let user = data.user;
             let token = data.token;
             context.commit("setUser", user);
@@ -297,7 +311,23 @@ export default createStore({
             })
 
           } else {
-            alert(data.msg)
+            // (data.msg === "The password does not match") {
+              swal({
+                icon: "error",
+                title: "The password does not match",
+                text: "Type in the password carefully",
+                buttons: "Try Again",
+              });
+              if (data.msg === "Email not found, Please Register") {
+                swal({
+                  icon: "error",
+                  title: "The email does not match",
+                  text: "Type in the proper email",
+                  buttons: "Try Again",
+                });
+              }
+            // }
+            // alert(data.msg)
             // router.push({
             //   name:"landing"
             // })
@@ -316,7 +346,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg);
+          // alert(data.msg);
+          if (data.msg === "Successfully update details") {
+            swal({
+              icon: "success",
+              title: "Successfully update details",
+            })
+          };
           context.dispatch("GetUser");
         });
     },
@@ -330,7 +366,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg)
+          // alert(data.msg)
+          if (data.msg === "deleted user") {
+            swal({
+              icon: "success",
+              title: "Successfully delete user account",
+            })
+          };
           context.dispatch("GetUser");
         })
       router.push({
@@ -363,7 +405,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg);
+          // alert(data.msg);
+          if (data.msg === "successully added a post") {
+            swal({
+              icon: "success",
+              title: "successully added a post",
+            })
+          };
           context.dispatch("getPost");
         });
     },
@@ -380,7 +428,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg);
+          // alert(data.msg);
+          if (data.msg === "Successfully edit a post") {
+            swal({
+              icon: "success",
+              title: "Successfully edit a post",
+            })
+          };
           context.dispatch("getPost");
         });
     },
@@ -395,7 +449,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg)
+          // alert(data.msg)
+          if (data.msg === "successully  delete") {
+            swal({
+              icon: "success",
+              title: "successully  delete A POST",
+            })
+          };
           context.dispatch("getPost")
         });
       router.push({
@@ -423,7 +483,13 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          alert(data.msg);
+          // alert(data.msg);
+          if (data.msg === "succeessfully add a comment !") {
+            swal({
+              icon: "success",
+              title: "succeessfully add a comment !",
+            })
+          };
           context.dispatch("getUserSinglePost", payload.post)
           context.dispatch("getUserpostswithoutComments", payload.post)
         });
@@ -445,7 +511,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg);
+          // alert(data.msg);
+          if (data.msg === "Successfully edit comment") {
+            swal({
+              icon: "success",
+              title: "Successfully edit comment",
+            })
+          };
           console.log(data);
           context.dispatch("getUserSinglePost", comments.postId);
           context.dispatch("getUserpostswithoutComments", comments.postId)
@@ -464,7 +536,13 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg)
+          // alert(data.msg)
+          if (data.msg === "Delete a comment!") {
+            swal({
+              icon: "success",
+              title: "Delete a comment!",
+            })
+          };
           context.dispatch("getUserSinglePost", comments.postId);
           context.dispatch("getUserpostswithoutComments", comments.postId)
         });
