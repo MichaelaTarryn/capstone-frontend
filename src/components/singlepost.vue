@@ -374,7 +374,7 @@ export default {
     },
     edit(i) {
       document.getElementById("comments" + i).disabled = this.on;
-      document.getElementById("btnedit1").style.display = "none";
+      document.getElementById("btnedit" + i).style.display = "none";
       document.getElementById("comments" + i).focus();
       this.on = !this.on;
       // this.$store.dispatch('EditComment',comment)
