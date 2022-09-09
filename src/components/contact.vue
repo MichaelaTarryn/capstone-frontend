@@ -61,6 +61,7 @@ export default {
 .row1 {
   display: flex;
 }
+
 #FOOTER {
   padding: 20px;
 }
@@ -150,7 +151,7 @@ height:auto;
   height:auto;
   padding:20px;
   border-right: 6px solid rgb(236, 186, 186);
-
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #icons{

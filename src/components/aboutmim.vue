@@ -82,6 +82,7 @@ export default {
   margin-top:40px;
   height: 10vh;
   padding-bottom:40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #vision1{
   
@@ -94,6 +95,7 @@ export default {
 }
 #header1{
   border-right: 6px solid rgb(236, 186, 186);
+  
 }
 
 #mission{
