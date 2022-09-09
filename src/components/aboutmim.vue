@@ -1,34 +1,6 @@
 <template>
     <div class="container" v-if="user">
-    <!-- <div class="row">
-      <div id="logo" class="col-md-2"><h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
-      </div> 
-      <div  id="searches" class="col-md-1">
-   <router-link class="nav-link" to="/landing">Home</router-link>
-    </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/search"
-          >search followers
-        </router-link>
-      </div>
-      <div id="searches" class="col-md-1">
-        <router-link class="nav-link" to="/addapost">Add a Post </router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/about">About Mimigram</router-link>
-      </div>
-      <div id="searches" class="col-md-2">
-        <router-link class="nav-link" to="/contact">Contact Mimigram</router-link>
-      </div>
-      <div v-if="user" id="searches" class="col-md-2">
-        <router-link
-          :to="{ name: 'profile', params: { id: user.id }}"
-          class="nav-link"
-          >View profile</router-link
-        >
-      </div>
-    </div>
-  -->   <hr/>
+     <hr/>
     <div class="row">
       <div class="col-md-12">
         <h5> About MIMIGRAM</h5>

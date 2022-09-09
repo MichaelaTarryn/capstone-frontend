@@ -24,11 +24,7 @@
         <h2>{{user.username}}</h2>
     </div>
   </div>
-  <!-- <div class="row">
-     <div  id="ouser" class="col-md-12">
-        <h2>{{user.username}}</h2>
-    </div>
-  </div> -->
+
   <div class="row"> 
     <div  id="fullname1" class="col-md-12">
         {{user.fullname}}

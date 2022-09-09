@@ -37,9 +37,6 @@
     </div>
    
   </div>
-  <!-- <div v-else>
-        <loader/>
-      </div> -->
   <div v-else> <h1> Please login in , thank you</h1>
   </div>
  

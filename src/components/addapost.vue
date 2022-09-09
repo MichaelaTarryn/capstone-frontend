@@ -42,13 +42,7 @@
         <input type="text" id="tag1" name="tag1" placeholder="Enter the location you want to tag in.." v-model="addlocation">
          </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-md-12"><label for=""> If you post isn't PG13 PLEASE click on the warning button</label></div>
-          <div class="col-md-12"> 
-            
-        <button @click="warning()">warning</button>
-         </div>
-  </div> -->
+
   <div class="row">
     <div class="col-md-12"> 
       <div id="submit"><button id="submit"> Submit</button> 
@@ -95,7 +89,6 @@ export default {
 .container{
     min-height:fit-content;
     background-color: rgb(250, 246, 246);
-    /* background-color: rgb(179, 126, 126); */
 }
 #logo{
     margin-top: 20px;

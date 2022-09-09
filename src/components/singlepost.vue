@@ -3,109 +3,17 @@
 
     <div class="row">
       <div class="col-md-3">
-        <!-- <router-link
-          :to="{ name: 'profile', params: { id: user.id } }"
-          class="nav-link"
-          >go back</router-link
-
-        > -->
+       
         <router-link class="nav-link" to="/search"> Go back </router-link>
       </div>
     </div>
     <hr />
 
     <div class="container">
-      <!--  <div class="row" v-if="userSinglePosts">
-    <div class="col-md-6" v-for="userSinglepost in  userSinglePosts"
-        :key="userSinglepost">
-    </div>
-    <div class="col-md-12"> 
-      {{userSinglePosts}}  
-    </div>
-    <div class="col-md-12">
-      <img id="userpic"  class="img-fluid" :src="userSinglePosts.img" alt="">
-    </div>
-    <div  id="details" class="col-md-8">
-      {{userSinglePosts.username}}
-    <button id="likes" @click="this.$store.dispatch('Addlike',userSinglePosts)"><i class="bi bi-star"></i></button > 
-      {{userSinglePosts.likes}}
-      <button
-     
-      type="button"
-      class="btn"
-      data-bs-toggle="modal"
-      :data-bs-target="'#edit'+userSinglePosts.postId"
-    >
-    Edit Post
-    </button> 
-    <button btn="btn" type="button" id="btnD" @click="this.$store.dispatch('deletePost',userSinglePosts)"> Delete post</button>
-     Modal  
-  <div
-    class="modal fade"
-    :id="'edit'+userSinglePosts.postId"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabe2"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Post</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <label for="name">img: </label>
-            <input type="name" maxlength="20" required id="add-title" v-model="userSinglePosts.img"/>
-          </div>
-          <div>
-            <label for="price">caption: </label>
-            <input type="name" required id="add-caption" v-model="userSinglePosts.caption"  />
-          </div>
-           <div>
-            <label for="img">People tag: </label>
-            <input type="name" required id="add-People" v-model="userSinglePosts.peopleTag"  />
-          </div>
-          <div>
-            <div>
-               <label for="name">Add location: </label>
-            <input type="text" required id="add-location"   v-model="userSinglePosts.addlocation" />
-            </div>
-        
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="closeBtn" data-bs-dismiss="modal">
-            Close
-          </button>
-          <button
-            type="button"
-            id="Btn"
-            data-bs-dismiss="modal" @click="this.$store.dispatch('EditPost', userSinglePosts)"
-            
-          >
-            <i class="bi bi-plus-circle"></i>
-            Edit Product
-          </button>
-
-        </div>
-      </div>
-    </div>
-  </div> 
-       </div>
-       
-       
-  </div> -->
 
       <div class="row" v-if="getUserpostswithoutComments">
         <div class="col-md-6"></div>
         <div class="col-md-12">
-          <!-- {{ getUserpostswithoutComments }} -->
         </div>
         <div class="col-md-12">
           <h3> This post was created by <router-link  :to="{ name: 'userprofile', params: { id: getUserpostswithoutComments.userId } }"
@@ -265,8 +173,7 @@
               :id="'comments' + comment.commentId"
               disabled
             />
-            <!-- <div id="button "> -->
-
+            
              </div>
              <div id="buttons" class="col-md-12 mt-4">
 
@@ -293,7 +200,7 @@
               Submit changes
             </button>
           </div>
-          <!-- </div> -->
+       
          
         </div>
       </div>
@@ -377,7 +284,7 @@ export default {
       document.getElementById("btnedit" + i).style.display = "none";
       document.getElementById("comments" + i).focus();
       this.on = !this.on;
-      // this.$store.dispatch('EditComment',comment)
+     
     },
     addComment() {
       return this.$store.dispatch("addComment", {

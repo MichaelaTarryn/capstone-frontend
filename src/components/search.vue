@@ -44,7 +44,7 @@
           :key="post"
           style="width: 18rem"
         >
-          <!-- <div class="col-md-4" > -->
+         
           <img
             class="card-img-top img-fluid"
             :src="post.img"
@@ -57,7 +57,7 @@
               </button>
             </router-link>
             <p class="card-text">{{ post.caption }}</p>
-            <!-- </div> -->
+           
           </div>
         </div>
       </div>

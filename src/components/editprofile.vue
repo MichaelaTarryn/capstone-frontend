@@ -1,24 +1,6 @@
 <template>
   <div class="container" v-if="user">
-     <!-- <div class="row">
-    <div  id=logo class="col-md-2">
-      <h5> 𝓜𝓘𝓜𝓘𝓖𝓡𝓐𝓜</h5>
-    </div>
-    <div  id="searches" class="col-md-3">
-   <router-link class="nav-link" to="/landing">Home</router-link>
-    </div>
-    <div  id="searches" class="col-md-2">
-   <router-link class="nav-link" to="/search">search followers </router-link>
-
-    </div>
-    <div  id="searches" class="col-md-2">
-  <router-link class="nav-link" to="/addapost">Add a Post</router-link>
-    </div>
-    <div id="searches" class="col-md-3">
-        <router-link class="nav-link" to="/profile">View profile</router-link>
-    </div>
-  </div>
--->  <hr> 
+   <hr> 
   <div class="row">
     <div id="first" class="col-md-2">
       <router-link :to="{ name: 'profile', params: { id: user.id }}">
